@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="img/logo.png">
+<title>Acronest</title>
+<meta name="description" content="Acronest — Acrobatic & movement event. 7–11 July 2027, Las Alpujarras, Granada, Spain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#030405; --bg2:#0a0b12; --ink:#f4efe6; --muted:#9c9eb3; --line:rgba(220,225,255,.13);
+    --peach:#eaa137; --coral:#c3b2f2; --rose:#8e9cf2; --gold:#f6cf7e;
+    --grad:linear-gradient(115deg,var(--gold),var(--peach) 55%,#d97b22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (max-width:520px){.tickets h2{font-size:2.6rem}h2{font-size:2.3rem}}
+  body{background:var(--bg);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-weight:350;line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+  .it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+  .hero .eyebrow{color:var(--ink);opacity:.85}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--peach)}
+  h2{font-weight:800;font-stretch:118%;text-transform:uppercase;font-size:clamp(2.4rem,6.4vw,5.4rem);line-height:.92;letter-spacing:-.01em;margin:22px 0 28px}
+  .lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);max-width:560px}
+  section{padding:140px 0;position:relative}
+  .hero,.tickets,.marquee{contain:paint}
+
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;font-weight:600;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;transition:transform .25s,box-shadow .25s;cursor:pointer;border:0;font-family:inherit}
+  .btn.fill{background:var(--grad);color:#07070d;box-shadow:0 10px 40px -10px rgba(234,161,55,.6)}
+  .btn.fill:hover{transform:translateY(-3px);box-shadow:0 20px 50px -10px rgba(234,161,55,.8)}
+  .btn.line{border:1px solid var(--line);color:var(--ink)}
+  .btn.line:hover{border-color:var(--ink)}
+  .btn .arr{transition:transform .25s}
+  .btn:hover .arr{transform:translateX(4px)}
+
+  /* grano de película sobre todo */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* Menú */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  nav.solid{background:rgba(3,4,5,.82);backdrop-filter:blur(14px);border-color:var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:48px;height:48px;border-radius:50%;box-shadow:0 0 0 1px var(--line),0 0 30px -6px rgba(142,156,242,.6);transition:transform .6s}
+  .logo:hover img{transform:rotate(-12deg)}
+  .logo span{display:flex;gap:2px}
+  .logo span i{font-style:normal;background:var(--peach);color:#000;font-weight:900;font-size:.8rem;width:1.35em;text-align:center;line-height:1.6}
+  @media (max-width:420px){.logo span{display:none}}
+  nav ul{display:flex;gap:34px;list-style:none;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+  nav ul a{color:var(--muted);transition:color .2s}
+  nav ul a:hover{color:var(--ink)}
+  .right{display:flex;align-items:center;gap:16px}
+  .langs{display:flex;font-size:.75rem;letter-spacing:.15em}
+  .langs button{background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;font:inherit}
+  .langs button.on{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--peach)}
+  nav .btn{padding:12px 20px;font-size:.72rem}
+  @media (max-width:960px){nav ul{display:none}}
+  @media (max-width:520px){nav .btn{display:none}}
+
+  /* Portada */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 0 60px;overflow:hidden}
+  .sun{position:absolute;width:min(90vw,980px);aspect-ratio:1;border-radius:50%;right:-18vw;top:-10vw;
+    background:radial-gradient(circle at 40% 45%,var(--gold),var(--peach) 22%,var(--coral) 45%,var(--rose) 62%,transparent 72%);
+    filter:blur(30px);opacity:.75;animation:breathe 9s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.07) translate(-2%,2%);opacity:.9}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,4,5,.3),rgba(3,4,5,.1) 40%,var(--bg) 96%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:50px;align-items:end}
+  .hero-text{position:relative;z-index:2}
+  .hero h1{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.6rem,8.6vw,9.5rem);line-height:.82;letter-spacing:-.02em;margin:26px 0 0;margin-right:-28%;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+  .hero h1 .it{font-size:.62em;display:block;margin-left:.08em;line-height:1}
+  .hero-photo{position:relative;z-index:1;aspect-ratio:3/4.4;max-height:78vh;border-radius:400px 400px 8px 8px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(142,156,242,.55)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;animation:zoom 18s ease-in-out infinite alternate}
+  @keyframes zoom{to{transform:scale(1.08)}}
+  .hero-bottom{display:flex;flex-direction:column;gap:30px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero h1{margin-right:0}
+    .hero .wrap.hero-grid{position:static}
+    .hero-photo{position:absolute;inset:0;max-height:none;border-radius:0;opacity:.32;box-shadow:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+  }
+  .facts{display:flex;gap:56px;flex-wrap:wrap}
+  .facts small{display:block;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .facts b{font-weight:500;font-size:1.15rem}
+  .cd{display:flex;gap:22px}
+  .cd div{text-align:center}
+  .cd b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:2.6rem;line-height:1}
+  .cd small{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+
+  /* Cinta */
+  .marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;white-space:nowrap}
+  .marquee div{display:inline-block;animation:slide 38s linear infinite;font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:.02em}
+  .marquee span.it{font-size:1.15em;margin:0 .5em}
+  .marquee .dot{color:var(--coral);margin:0 .6em}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* Manifiesto */
+  .manifesto p.big{font-family:"Instrument Serif",serif;font-size:clamp(2rem,4.2vw,3.8rem);line-height:1.12;max-width:1050px;margin-top:30px}
+  .man-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:60px;align-items:center}
+  .ilus{width:100%;max-width:400px;justify-self:center;display:block;-webkit-mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 70%,transparent 100%);animation:float 7s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-14px)}}
+  @media (max-width:860px){.man-grid{grid-template-columns:1fr}.ilus{max-width:280px}}
+  .manifesto p.big em{font-style:italic}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:90px;border-top:1px solid var(--line)}
+  .stats div{padding:30px 24px 0 0}
+  .stats b{display:block;font-weight:800;font-stretch:120%;font-size:clamp(2.4rem,5vw,4rem);line-height:1}
+  .stats small{color:var(--muted);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase}
+  @media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr);row-gap:30px}}
+
+  /* Experiencia */
+  .exp{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
+  .card{position:relative;aspect-ratio:3/4.2;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;isolation:isolate}
+  .card .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .bg{transform:scale(1.06)}
+  .card::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 30%,transparent 40%,rgba(0,0,0,.88))}
+  .card h3,.card p,.card .n{position:relative;z-index:1}
+  .card .n{position:absolute}
+  .card .n{position:absolute;top:24px;left:30px;font-family:"Instrument Serif",serif;font-size:1.3rem;opacity:.8}
+  .card h3{font-weight:800;font-stretch:120%;text-transform:uppercase;font-size:1.7rem;line-height:1;margin-bottom:10px}
+  .card p{color:#d8cbbf;font-size:.95rem}
+  @media (max-width:900px){.exp{grid-template-columns:1fr}.card{aspect-ratio:4/3.4}}
+
+  /* Lugar */
+  .venue{background:var(--bg2)}
+  .venue .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+  .venue-img{aspect-ratio:4/5;border-radius:300px 300px 6px 6px;overflow:hidden;position:relative}
+  .venue-img .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .venue ul{list-style:none;margin-top:40px;border-top:1px solid var(--line)}
+  .venue li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .venue li span:first-child{color:var(--muted);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;padding-top:4px}
+  @media (max-width:900px){.venue .wrap{grid-template-columns:1fr;gap:50px}.venue-img{max-width:440px}}
+
+  .maplink{color:var(--peach);border-bottom:1px solid transparent;transition:border-color .2s;text-align:right}
+  .maplink:hover{border-color:var(--peach)}
+
+  /* Galería */
+  .gal-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+  .gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(110px,11vw,160px);gap:14px;margin-top:60px}
+  .gallery figure{position:relative;border-radius:4px;overflow:hidden;cursor:zoom-in}
+  .gallery figure .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .6s;filter:saturate(.9)}
+  .gallery figure:hover .bg{transform:scale(1.05);filter:saturate(1.1)}
+  .g1{grid-column:span 7;grid-row:span 4}.g2{grid-column:span 5;grid-row:span 2}.g3{grid-column:span 5;grid-row:span 2}
+  .g4{grid-column:span 4;grid-row:span 3}.g5{grid-column:span 4;grid-row:span 3}.g6{grid-column:span 4;grid-row:span 3}
+  .g7{grid-column:span 6;grid-row:span 3}.g8{grid-column:span 6;grid-row:span 3}
+  @media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+    .gallery figure{grid-column:span 1!important;grid-row:span 2!important}.gallery .g1{grid-column:span 2!important}}
+
+  /* Lugares de ejemplo mientras no hay fotos: degradés del logo */
+  .ph1{background-image:radial-gradient(circle at 30% 70%,var(--rose),transparent 55%),linear-gradient(160deg,var(--gold),var(--coral))}
+  .ph2{background-image:radial-gradient(circle at 70% 30%,var(--peach),transparent 50%),linear-gradient(200deg,#3a1420,var(--rose))}
+  .ph3{background-image:radial-gradient(circle at 50% 100%,var(--coral),transparent 60%),linear-gradient(180deg,#1d1512,#5a2a1c)}
+  .ph4{background-image:linear-gradient(140deg,var(--peach),var(--rose) 70%,#4d1630)}
+  .ph5{background-image:radial-gradient(circle at 20% 20%,var(--gold),transparent 45%),linear-gradient(120deg,#2a1610,var(--coral))}
+  .ph6{background-image:linear-gradient(200deg,#120c0a,#6a2438 60%,var(--coral))}
+  .tag{position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+
+  /* Entradas */
+  .tickets{text-align:center;overflow:hidden}
+  .tickets .sun{right:auto;left:50%;top:50%;transform:translate(-50%,-50%);width:min(120vw,1100px);opacity:.35;animation:none}
+  .tickets .wrap{position:relative}
+  .tickets .eyebrow{justify-content:center}
+  .tickets h2{font-size:clamp(3rem,9vw,8rem)}
+  .tickets .lead{margin:0 auto 46px}
+  .mode{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:34px;background:rgba(3,4,5,.5)}
+  .mode button{background:none;border:0;color:var(--muted);font:inherit;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:11px 20px;border-radius:999px;cursor:pointer;transition:.25s}
+  .mode button.on{background:var(--grad);color:#07070d;font-weight:600}
+  .nests{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:46px;text-align:left}
+  .nest{border:1px solid var(--line);border-radius:10px;padding:26px 22px;background:rgba(10,11,18,.72);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:10px;transition:border-color .3s,transform .3s}
+  .nest:hover{border-color:var(--peach);transform:translateY(-4px)}
+  .nest h3{font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:1.02rem;line-height:1.1}
+  .nest p{color:var(--muted);font-size:.86rem;flex:1}
+  .nest .price{font-family:"Instrument Serif",serif;font-size:1.4rem;color:var(--peach);border-top:1px solid var(--line);padding-top:12px}
+  .nest .price b{font-weight:400;font-size:2.4rem;line-height:1}
+  .nest .price small{display:block;font-family:Archivo,sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .nest.love{border-color:rgba(234,161,55,.45)}
+  .deposit{color:var(--muted);font-size:.9rem;margin-top:18px}
+  @media (max-width:1000px){.nests{grid-template-columns:repeat(2,1fr)}.nest.love{grid-column:span 2}}
+  @media (max-width:520px){.nests{grid-template-columns:1fr}.nest.love{grid-column:auto}}
+  .spots{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;margin-top:30px;color:var(--muted)}
+  .spots i{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 0 var(--coral);animation:ping 2s infinite}
+  @keyframes ping{70%{box-shadow:0 0 0 10px rgba(234,161,55,0)}100%{box-shadow:0 0 0 0 rgba(234,161,55,0)}}
+
+  /* Preguntas */
+  .faq .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
+  details{border-bottom:1px solid var(--line);padding:26px 0}
+  details:first-child{border-top:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:1.15rem;font-weight:500}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:"Instrument Serif",serif;font-size:1.8rem;line-height:.8;color:var(--peach);transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);margin-top:14px;max-width:560px}
+  @media (max-width:900px){.faq .wrap{grid-template-columns:1fr;gap:30px}}
+
+  /* Pie */
+  footer{border-top:1px solid var(--line);padding:90px 0 40px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:end}
+  .foot-top h3{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,12vw,10rem);line-height:.8;letter-spacing:-.02em}
+  .foot-links{display:flex;flex-direction:column;gap:10px;font-size:1.05rem}
+  .foot-links a{border-bottom:1px solid transparent;transition:border-color .2s;width:fit-content}
+  .foot-links a:hover{border-color:var(--peach)}
+  .foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:60px;color:var(--muted);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase}
+
+  /* Aparición al bajar */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  /* Visor de fotos */
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:30px}
+  .lightbox.on{display:flex}
+  .lightbox div{width:min(90vw,1100px);height:80vh;background-size:contain;background-repeat:no-repeat;background-position:center}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Acronest"><img src="img/logo.png" alt=""><span aria-hidden="true"><i>A</i><i>C</i><i>R</i><i>O</i><i>N</i><i>E</i><i>S</i><i>T</i></span></a>
+    <ul>
+      <li><a href="#experience" data-t="nav.exp">Experience</a></li>
+      <li><a href="#venue" data-t="nav.venue">The venue</a></li>
+      <li><a href="#gallery" data-t="nav.gallery">Gallery</a></li>
+      <li><a href="#faq" data-t="nav.faq">FAQ</a></li>
+    </ul>
+    <div class="right">
+      <div class="langs"><button data-set="en">EN</button><button data-set="es">ES</button></div>
+      <a href="#tickets" class="btn fill" data-t="nav.tickets">Tickets</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sun"></div>
+  <div class="wrap hero-grid">
+   <div class="hero-text">
+    <p class="eyebrow" data-t="hero.eyebrow">Acrobatic &amp; movement event · Granada, Spain</p>
+    <h1>Acronest<span class="it grad" data-t="hero.year">4th edition · 2027</span></h1>
+    <div class="hero-bottom">
+      <div>
+        <div class="facts">
+          <div><small data-t="hero.when">When</small><b data-t="hero.dates">7 – 11 July 2027</b></div>
+          <div><small data-t="hero.where">Where</small><b data-t="hero.place">Las Alpujarras</b></div>
+          <div><small data-t="hero.spots">Places</small><b data-t="hero.limited">Strictly limited</b></div>
+        </div>
+        <div class="actions">
+          <a href="#tickets" class="btn fill"><span data-t="hero.cta">Secure your place</span><span class="arr">→</span></a>
+          <a href="#gallery" class="btn line" data-t="hero.cta2">Past editions</a>
+        </div>
+      </div>
+      <div class="cd" aria-label="Countdown">
+        <div><b id="cd-d">–</b><small data-t="cd.d">days</small></div>
+        <div><b id="cd-h">–</b><small data-t="cd.h">hours</small></div>
+        <div><b id="cd-m">–</b><small data-t="cd.m">min</small></div>
+      </div>
+    </div>
+   </div>
+   <div class="hero-photo"><img src="img/f22.jpg" alt="Acrobatics at Acronest 2025"></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div>
+  ACROYOGA<span class="dot">✦</span><span class="it grad">icarians</span><span class="dot">✦</span>WHIPS<span class="dot">✦</span><span class="it grad">handstands</span><span class="dot">✦</span>ACRODUO<span class="dot">✦</span><span class="it grad">massage</span><span class="dot">✦</span>NATURE<span class="dot">✦</span><span class="it grad">party</span><span class="dot">✦</span>
+  ACROYOGA<span class="dot">✦</span><span class="it grad">icarians</span><span class="dot">✦</span>WHIPS<span class="dot">✦</span><span class="it grad">handstands</span><span class="dot">✦</span>ACRODUO<span class="dot">✦</span><span class="it grad">massage</span><span class="dot">✦</span>NATURE<span class="dot">✦</span><span class="it grad">party</span><span class="dot">✦</span>
+</div></div>
+
+<section class="manifesto">
+  <div class="wrap">
+   <div class="man-grid">
+    <div>
+    <p class="eyebrow reveal" data-t="man.eyebrow">The nest</p>
+    <p class="big reveal" data-t="man.text" data-html>Five days where bodies learn to <em class="grad">fly</em>, to trust and to land softly. An intimate gathering for those who move — in a place made to be remembered.</p>
+    </div>
+    <img class="ilus reveal" src="img/ilustracion.jpg" alt="Acronest illustration: a winged acrobat flying above hands that grow into a tree">
+   </div>
+    <div class="stats reveal">
+      <div><b>5</b><small data-t="st.days">days</small></div>
+      <div><b data-t="st.n">4th</b><small data-t="st.ed">edition</small></div>
+      <div><b>+12</b><small data-t="st.teach">teachers</small></div>
+      <div><b>∞</b><small data-t="st.mem">memories</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="padding-top:40px">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-t="exp.eyebrow">The experience</p>
+    <h2 class="reveal" data-t="exp.title" data-html>More than<br>a <span class="it grad">festival</span></h2>
+    <div class="exp">
+      <article class="card reveal"><div class="bg" style="background-image:url(img/f7.jpg)"></div><span class="n">01</span><h3 data-t="c1.t">Workshops</h3><p data-t="c1.p">Daily classes with international teachers, from foundations to high flying.</p></article>
+      <article class="card reveal"><div class="bg" style="background-image:url(img/f11.jpg)"></div><span class="n">02</span><h3 data-t="c2.t">Jams &amp; shows</h3><p data-t="c2.p">Open jams at sunset and evening performances under the stars.</p></article>
+      <article class="card reveal"><div class="bg" style="background-image:url(img/f18.jpg)"></div><span class="n">03</span><h3 data-t="c3.t">Live in it</h3><p data-t="c3.p">Stay, eat and rest on site. Everything is taken care of — you just move.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="venue" id="venue">
+  <div class="wrap">
+    <div class="venue-img reveal"><div class="bg" style="background-image:url(img/f48.jpg)"></div></div>
+    <div>
+      <p class="eyebrow reveal" data-t="ven.eyebrow">The venue</p>
+      <h2 class="reveal" data-t="ven.title" data-html>A place<br><span class="it grad">like no other</span></h2>
+      <p class="lead reveal" data-t="ven.text">Cortijo Casería del Mercado is an organic farm in the heart of the Alpujarra mountains, honouring nature, ecology and tradition. Two indoor yoga studios, an outdoor training space and a natural mineral-water swimming pool — all with breathtaking views.</p>
+      <ul class="reveal">
+        <li><span data-t="ven.l1">Location</span><span data-t="ven.v1">Cortijo Casería del Mercado</span></li>
+        <li><span data-t="ven.l5">Address</span><a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="maplink" data-t="ven.v5">Las Alpujarras, Granada · See on map ↗</a></li>
+        <li><span data-t="ven.l2">Stay</span><span data-t="ven.v2">On site, all included</span></li>
+        <li><span data-t="ven.l3">Food</span><span data-t="ven.v3">Full board</span></li>
+        <li><span data-t="ven.l6">Check-in</span><span data-t="ven.v6">Wednesday 7 July · 4 pm</span></li>
+        <li><span data-t="ven.l7">Check-out</span><span data-t="ven.v7">Sunday 11 July · 5 pm</span></li>
+        <li><span data-t="ven.l4">Arrival</span><span data-t="ven.v4">Granada or Málaga airport</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="gal-head">
+      <div>
+        <p class="eyebrow reveal" data-t="gal.eyebrow">Past editions</p>
+        <h2 class="reveal" data-t="gal.title" data-html>This is how<br>it <span class="it grad">feels</span></h2>
+      </div>
+      <a href="https://www.instagram.com/acro.nest/" target="_blank" rel="noopener" class="btn line reveal">@acro.nest <span class="arr">↗</span></a>
+    </div>
+    <div class="gallery">
+      <figure class="g1 reveal"><div class="bg" style="background-image:url(img/f53.jpg);background-position:50% 72%"></div><span class="tag">2025</span></figure>
+      <figure class="g2 reveal"><div class="bg" style="background-image:url(img/f24.jpg);background-position:50% 35%"></div><span class="tag">2025</span></figure>
+      <figure class="g3 reveal"><div class="bg" style="background-image:url(img/f12.jpg);background-position:50% 45%"></div><span class="tag">2025</span></figure>
+      <figure class="g4 reveal"><div class="bg" style="background-image:url(img/f51.jpg);background-position:50% 30%"></div><span class="tag">2025</span></figure>
+      <figure class="g5 reveal"><div class="bg" style="background-image:url(img/f14.jpg);background-position:50% 55%"></div><span class="tag">2025</span></figure>
+      <figure class="g6 reveal"><div class="bg" style="background-image:url(img/f29.jpg)"></div><span class="tag">2025</span></figure>
+      <figure class="g7 reveal"><div class="bg" style="background-image:url(img/f10.jpg);background-position:50% 55%"></div><span class="tag">2025</span></figure>
+      <figure class="g8 reveal"><div class="bg" style="background-image:url(img/f3.jpg);background-position:50% 55%"></div><span class="tag">2025</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="tickets" id="tickets">
+  <div class="sun"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal" data-t="tk.eyebrow">Tickets · 2027</p>
+    <h2 class="reveal" data-t="tk.title" data-html>Choose<br>your <span class="it grad">nest</span></h2>
+    <p class="lead reveal" data-t="tk.text">5 days, 4 nights. Every ticket includes all activities, accommodation, daily meals, snacks and drinks.</p>
+    <div class="mode reveal" role="tablist">
+      <button class="on" data-mode="solo" data-t="tk.solo">Solo</button>
+      <button data-mode="duo" data-t="tk.duo">Promo duo · for two</button>
+    </div>
+    <div class="nests reveal">
+      <article class="nest" data-solo="420" data-duo="760"><h3 data-t="n1.t">Outdoor Nest</h3><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><div class="price">€<b>420</b><small data-t="tk.pp">per person</small></div></article>
+      <article class="nest" data-solo="460" data-duo="840"><h3 data-t="n2.t">8-Person Nest</h3><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><div class="price">€<b>460</b><small data-t="tk.pp">per person</small></div></article>
+      <article class="nest" data-solo="480" data-duo="880"><h3 data-t="n3.t">4-Person Nest</h3><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><div class="price">€<b>480</b><small data-t="tk.pp">per person</small></div></article>
+      <article class="nest" data-solo="500" data-duo="920"><h3 data-t="n4.t">2-Person Nest</h3><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><div class="price">€<b>500</b><small data-t="tk.pp">per person</small></div></article>
+      <article class="nest love" data-solo="520" data-duo="960"><h3>Love Nest</h3><p data-t="n5.p">Private room for 2 with private bathroom.</p><div class="price">€<b>520</b><small data-t="tk.pp">per person</small></div></article>
+    </div>
+    <a href="inscripcion.html" class="btn fill reveal" id="buy"><span data-t="tk.cta">Register now</span><span class="arr">→</span></a>
+    <p class="deposit reveal" data-t="tk.dep">A €100 deposit by bank transfer secures your place. The rest in cash on arrival or in 3 installments.</p>
+    <div><span class="spots"><i></i><span data-t="tk.spots">Limited availability</span></span></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow reveal">FAQ</p>
+      <h2 class="reveal" data-t="faq.title" data-html>Good<br><span class="it grad">to know</span></h2>
+    </div>
+    <div class="reveal">
+      <details><summary data-t="q1">Do I need previous experience?</summary><p data-t="a1">No. Acronest welcomes every level, from people taking their first steps to advanced practitioners. Tell us about your practice when you register and we will plan the schedule around it.</p></details>
+      <details><summary data-t="q2">Can I come without a partner?</summary><p data-t="a2">Of course — many people come on their own. If you come with a partner, check the Promo Duo prices.</p></details>
+      <details><summary data-t="q3">What is included in the ticket?</summary><p data-t="a3">All activities, accommodation, daily meals, snacks and drinks (coffee, tea). Meals: Wednesday dinner; Thursday to Saturday breakfast, lunch and dinner; Sunday breakfast and lunch.</p></details>
+      <details><summary data-t="q5">How do I pay?</summary><p data-t="a5">A €100 deposit by bank transfer secures your place. The remaining balance can be paid in cash on the first day of the event or in 3 installments.</p></details>
+      <details><summary data-t="q4">Can I get a refund?</summary><p data-t="a4">Tickets are non-refundable, but they are transferable to someone else until the day before the event (updated to the current price).</p></details>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div style="display:flex;align-items:center;gap:clamp(16px,3vw,40px)"><img src="img/logo.png" alt="" style="width:clamp(70px,11vw,150px);border-radius:50%"><h3>Acro<span class="it grad">nest</span></h3></div>
+      <div class="foot-links">
+        <a href="mailto:acronest.fest@gmail.com">acronest.fest@gmail.com</a>
+        <a href="https://www.instagram.com/acro.nest/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://wa.me/5491123357818" target="_blank" rel="noopener">WhatsApp · Rober ↗</a>
+        <a href="https://wa.me/56998419773" target="_blank" rel="noopener">WhatsApp · Conitrini ↗</a>
+        <a href="inscripcion.html" data-t="ft.reg">Register →</a>
+      </div>
+    </div>
+    <div class="foot-bot"><span>© 2027 Acronest</span><span data-t="ft.dates">7 – 11 July 2027 · Granada, Spain</span></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb"><div></div></div>
+
+<script>
+// ── Textos en español (el inglés está escrito directo en la página) ──
+var ES = {
+  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Entradas",
+  "hero.eyebrow":"Evento de acrobacia y movimiento · Granada, España","hero.year":"4ª edición · 2027",
+  "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde","hero.place":"Las Alpujarras",
+  "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
+  "cd.d":"días","cd.h":"horas","cd.m":"min",
+  "man.eyebrow":"El nido","man.text":"Cinco días donde el cuerpo aprende a <em class=\"grad\">volar</em>, a confiar y a aterrizar suave. Un encuentro íntimo para quienes se mueven — en un lugar hecho para recordar.",
+  "st.days":"días","st.n":"4ª","st.ed":"edición","st.teach":"profes","st.mem":"recuerdos",
+  "exp.eyebrow":"La experiencia","exp.title":"Más que<br>un <span class=\"it grad\">festival</span>",
+  "c1.t":"Talleres","c1.p":"Clases todos los días con profes internacionales, desde lo básico hasta vuelos altos.",
+  "c2.t":"Jams y shows","c2.p":"Jams abiertas al atardecer y shows por la noche bajo las estrellas.",
+  "c3.t":"Vívelo","c3.p":"Duerme, come y descansa en el lugar. Todo está resuelto — tú solo te mueves.",
+  "ven.eyebrow":"El lugar","ven.title":"Un lugar<br><span class=\"it grad\">único</span>","ven.text":"El Cortijo Casería del Mercado es una finca ecológica en el corazón de La Alpujarra, que honra la naturaleza, la ecología y la tradición. Dos salas de yoga cubiertas, un espacio de entrenamiento al aire libre y una piscina de agua mineral natural, todo con vistas impresionantes.",
+  "ven.l1":"Ubicación","ven.v1":"Cortijo Casería del Mercado","ven.l5":"Dirección","ven.v5":"Las Alpujarras, Granada · Ver en el mapa ↗","ven.l2":"Alojamiento","ven.v2":"En el lugar, todo incluido","ven.l3":"Comida","ven.v3":"Pensión completa","ven.l4":"Cómo llegar","ven.v4":"Aeropuerto de Granada o Málaga",
+  "gal.eyebrow":"Ediciones anteriores","gal.title":"Así<br>se <span class=\"it grad\">vive</span>",
+  "tk.eyebrow":"Entradas · 2027","tk.title":"Elige<br>tu <span class=\"it grad\">nido</span>","tk.text":"5 días, 4 noches. Cada entrada incluye todas las actividades, alojamiento, comidas diarias, snacks y bebidas.",
+  "tk.solo":"Individual","tk.duo":"Promo dúo · para dos","tk.pp":"por persona","tk.p2":"para dos",
+  "n1.t":"Nido exterior","n1.p":"Acampada en tu tienda o camper. Baños y duchas compartidos.",
+  "n2.t":"Nido de 8","n2.p":"Habitación compartida para 8. Baños y duchas compartidos.",
+  "n3.t":"Nido de 4","n3.p":"Habitación compartida para 4. Baños y duchas compartidos.",
+  "n4.t":"Nido de 2","n4.p":"Habitación compartida para 2. Baños y duchas compartidos.",
+  "n5.p":"Habitación privada para 2 con baño privado.",
+  "tk.cta":"Inscríbete","tk.spots":"Plazas limitadas",
+  "tk.dep":"Una seña de 100 € por transferencia bancaria reserva tu plaza. El resto, en efectivo al llegar o en 3 cuotas.",
+  "faq.title":"Bueno<br><span class=\"it grad\">saber</span>",
+  "q1":"¿Necesito experiencia previa?","a1":"No. Acronest es para todos los niveles, desde quienes dan sus primeros pasos hasta practicantes avanzados. Cuéntanos sobre tu práctica al inscribirte y armamos el programa pensando en eso.",
+  "q2":"¿Puedo ir sin pareja de acro?","a2":"Claro, mucha gente viene sola. Si vienes con pareja, mira los precios de la Promo Dúo.",
+  "q3":"¿Qué incluye la entrada?","a3":"Todas las actividades, alojamiento, comidas diarias, snacks y bebidas (café, té). Comidas: miércoles cena; de jueves a sábado desayuno, almuerzo y cena; domingo desayuno y almuerzo.",
+  "q5":"¿Cómo se paga?","a5":"Una seña de 100 € por transferencia bancaria reserva tu plaza. El resto se puede pagar en efectivo el primer día del evento o en 3 cuotas.",
+  "q4":"¿Se puede devolver la entrada?","a4":"Las entradas no son reembolsables, pero se pueden transferir a otra persona hasta el día anterior al evento (actualizadas al precio vigente).",
+  "ven.l6":"Check-in","ven.v6":"Miércoles 7 de julio · 16 h","ven.l7":"Check-out","ven.v7":"Domingo 11 de julio · 17 h",
+  "ft.reg":"Inscripción →","ft.dates":"7 – 11 de julio de 2027 · Granada, España"
+};
+var EN = {};
+document.querySelectorAll('[data-t]').forEach(function(el){
+  EN[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent;
+});
+function setLang(l){
+  var dict = l === 'es' ? ES : EN;
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var v = dict[el.dataset.t]; if (v == null) return;
+    if (el.hasAttribute('data-html')) el.innerHTML = v; else el.textContent = v;
+  });
+  document.documentElement.lang = l;
+  document.querySelectorAll('.langs button').forEach(function(b){ b.classList.toggle('on', b.dataset.set === l); });
+  try { localStorage.setItem('acronest-lang', l); } catch(e){}
+}
+var saved = null; try { saved = localStorage.getItem('acronest-lang'); } catch(e){}
+setLang(saved || ((navigator.language||'').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
+document.querySelectorAll('.langs button').forEach(function(b){ b.onclick = function(){ setLang(b.dataset.set); }; });
+
+// ── Precios: individual / promo dúo ──
+var priceMode = 'solo';
+function renderPrices(){
+  var es = document.documentElement.lang === 'es';
+  document.querySelectorAll('.nest').forEach(function(n){
+    n.querySelector('.price b').textContent = n.dataset[priceMode];
+    n.querySelector('.price small').textContent = priceMode === 'duo' ? (es ? ES['tk.p2'] : 'for two') : (es ? ES['tk.pp'] : 'per person');
+  });
+}
+document.querySelectorAll('.mode button').forEach(function(b){
+  b.onclick = function(){
+    priceMode = b.dataset.mode;
+    document.querySelectorAll('.mode button').forEach(function(x){ x.classList.toggle('on', x === b); });
+    renderPrices();
+  };
+});
+document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', renderPrices); });
+
+// ── Cuenta regresiva ──
+var start = new Date('2027-07-07T10:00:00+02:00');
+function tick(){
+  var ms = Math.max(0, start - new Date());
+  document.getElementById('cd-d').textContent = Math.floor(ms/864e5);
+  document.getElementById('cd-h').textContent = String(Math.floor(ms/36e5)%24).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor(ms/6e4)%60).padStart(2,'0');
+}
+tick(); setInterval(tick, 20000);
+
+// ── Menú que se oscurece al bajar ──
+var nav = document.getElementById('nav');
+function onScroll(){ nav.classList.toggle('solid', window.scrollY > 40); }
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// ── Aparición suave al bajar ──
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+// ── Visor de fotos ──
+var lb = document.getElementById('lb');
+document.querySelectorAll('.gallery figure').forEach(function(f){
+  f.onclick = function(){ var bg = getComputedStyle(f.querySelector('.bg')).backgroundImage; lb.firstElementChild.style.backgroundImage = bg; lb.classList.add('on'); };
+});
+lb.onclick = function(){ lb.classList.remove('on'); };
+</script>
+</body>
+</html>

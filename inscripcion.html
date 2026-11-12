@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register · Acronest 2027</title>
+<meta name="description" content="Register for Acronest 2027 — 7–11 July, Las Alpujarras, Granada.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#030405; --bg2:#0a0b12; --ink:#f4efe6; --muted:#9c9eb3; --line:rgba(220,225,255,.13);
+    --peach:#eaa137; --gold:#f6cf7e; --lav:#8e9cf2; --err:#ff8a7a;
+    --grad:linear-gradient(115deg,var(--gold),var(--peach) 55%,#d97b22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{overflow-x:clip}
+  body{background:var(--bg);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-weight:350;line-height:1.55;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* Barra superior */
+  header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(3,4,5,.85);backdrop-filter:blur(12px);z-index:20}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:42px;height:42px;border-radius:50%}
+  .logo span{display:flex;gap:2px}
+  .logo span i{font-style:normal;background:var(--peach);color:#000;font-weight:900;font-size:.72rem;width:1.35em;text-align:center;line-height:1.6}
+  .back{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .back:hover{color:var(--ink)}
+  .hright{display:flex;gap:22px;align-items:center}
+  .langs button{background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;font:inherit;font-size:.75rem;letter-spacing:.15em}
+  .langs button.on{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--peach)}
+  @media (max-width:560px){.logo span,.back{display:none}}
+
+  /* Estructura */
+  .layout{display:grid;grid-template-columns:minmax(300px,420px) 1fr;min-height:calc(100vh - 79px)}
+  aside{position:sticky;top:79px;height:calc(100vh - 79px);border-right:1px solid var(--line);padding:44px 40px;display:flex;flex-direction:column;gap:26px;overflow:hidden}
+  aside .ilus{position:absolute;inset:auto -40px -60px auto;width:300px;opacity:.28;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 45%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 50%,#000 45%,transparent 72%)}
+  .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  aside h1{font-weight:900;font-stretch:120%;text-transform:uppercase;font-size:2.6rem;line-height:.9}
+  aside h1 .it{text-transform:none;display:block;font-size:.8em;line-height:1.1}
+  .meta{display:flex;flex-direction:column;gap:4px;font-size:.92rem;color:var(--muted)}
+  .meta b{color:var(--ink);font-weight:500}
+  .summary{border:1px solid var(--line);border-radius:10px;padding:20px;background:rgba(10,11,18,.7);position:relative;z-index:1}
+  .summary .row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;padding:6px 0}
+  .summary .row span:first-child{color:var(--muted)}
+  .summary .total{border-top:1px solid var(--line);margin-top:8px;padding-top:12px}
+  .summary .total b{font-family:"Instrument Serif",serif;font-weight:400;font-size:1.8rem;color:var(--peach)}
+  .summary .dep{font-size:.8rem;color:var(--muted);margin-top:6px}
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr}
+    aside{position:relative;top:0;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:30px 22px}
+    aside .ilus{display:none}
+    .summary{display:none}
+  }
+
+  main{padding:44px clamp(22px,5vw,80px) 120px;max-width:860px;width:100%}
+  .steps{display:flex;gap:6px;margin-bottom:40px}
+  .steps i{flex:1;height:3px;border-radius:3px;background:var(--line);transition:background .4s}
+  .steps i.lit{background:var(--peach)}
+  .stepno{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:10px}
+  h2{font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:clamp(1.9rem,4vw,2.8rem);line-height:.95;margin-bottom:12px}
+  h2 .it{text-transform:none}
+  .sub{color:var(--muted);margin-bottom:34px;max-width:560px}
+  fieldset{border:0;display:none}
+  fieldset.on{display:block;animation:in .5s cubic-bezier(.2,.7,.2,1)}
+  @keyframes in{from{opacity:0;transform:translateY(14px)}}
+
+  .q{margin-bottom:30px}
+  .q > label, .q > .lbl{display:block;font-weight:500;margin-bottom:10px}
+  .q .req{color:var(--peach)}
+  .q .hint{display:block;color:var(--muted);font-size:.85rem;font-weight:350;margin-top:2px}
+  input[type=text],input[type=email],input[type=tel],textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:inherit;font-size:1.1rem;padding:10px 2px;outline:none;transition:border-color .25s}
+  textarea{resize:vertical;min-height:110px;border:1px solid var(--line);border-radius:8px;padding:14px}
+  input:focus,textarea:focus{border-color:var(--peach)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media (max-width:600px){.grid2{grid-template-columns:1fr}}
+
+  /* Opciones tipo tarjeta / chip */
+  .opts{display:flex;flex-wrap:wrap;gap:10px}
+  .opts.col{flex-direction:column}
+  .opt{position:relative}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt span{display:block;border:1px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer;transition:.2s;font-size:.95rem}
+  .opts.col .opt span{border-radius:10px;padding:14px 18px}
+  .opt span:hover{border-color:rgba(234,161,55,.6)}
+  .opt input:checked + span{border-color:var(--peach);background:rgba(234,161,55,.12);color:var(--ink)}
+  .opt input:focus-visible + span{outline:2px solid var(--peach);outline-offset:2px}
+  .opt small{display:block;color:var(--muted);font-size:.82rem}
+
+  .mode{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:22px}
+  .mode label{position:relative}
+  .mode input{position:absolute;opacity:0}
+  .mode span{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:10px 18px;border-radius:999px;cursor:pointer;color:var(--muted);transition:.25s}
+  .mode input:checked + span{background:var(--grad);color:#07070d;font-weight:600}
+
+  .nests{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .nest{position:relative}
+  .nest input{position:absolute;opacity:0}
+  .nest .box{display:flex;flex-direction:column;gap:6px;height:100%;border:1px solid var(--line);border-radius:10px;padding:18px;cursor:pointer;transition:.25s;background:rgba(10,11,18,.6)}
+  .nest .box:hover{border-color:rgba(234,161,55,.6)}
+  .nest input:checked + .box{border-color:var(--peach);background:rgba(234,161,55,.1);box-shadow:0 10px 40px -18px rgba(234,161,55,.6)}
+  .nest input:focus-visible + .box{outline:2px solid var(--peach);outline-offset:2px}
+  .nest b{font-weight:800;font-stretch:112%;text-transform:uppercase;font-size:.92rem}
+  .nest p{color:var(--muted);font-size:.82rem;flex:1}
+  .nest .pr{font-family:"Instrument Serif",serif;font-size:1.7rem;color:var(--peach);line-height:1}
+  .nest .pr small{font-family:Archivo,sans-serif;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+
+  .cond{display:none}
+  .cond.show{display:block;animation:in .4s}
+
+  .check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;color:var(--muted);font-size:.92rem}
+  .check input{margin-top:4px;accent-color:var(--peach);width:18px;height:18px;flex:none}
+
+  .err{display:none;color:var(--err);font-size:.85rem;margin-top:8px}
+  .q.bad .err{display:block}
+  .q.bad input[type=text],.q.bad input[type=email],.q.bad input[type=tel],.q.bad textarea{border-color:var(--err)}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:999px;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:0;font-family:inherit;transition:transform .25s,box-shadow .25s,opacity .25s}
+  .btn.fill{background:var(--grad);color:#07070d;box-shadow:0 10px 40px -12px rgba(234,161,55,.6)}
+  .btn.fill:hover{transform:translateY(-2px)}
+  .btn.line{background:none;border:1px solid var(--line);color:var(--ink)}
+  .btn.line:hover{border-color:var(--ink)}
+  .btn[disabled]{opacity:.5;pointer-events:none}
+  .btn.hide{visibility:hidden}
+
+  /* Pantalla final */
+  .done{display:none}
+  .done.on{display:block;animation:in .6s}
+  .bank{border:1px solid rgba(234,161,55,.45);border-radius:12px;padding:26px;margin:30px 0;background:rgba(234,161,55,.06)}
+  .bank .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line)}
+  .bank .row:last-of-type{border-bottom:0}
+  .bank .row span:first-child{color:var(--muted);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;padding-top:3px}
+  .bank .row b{font-weight:500;font-size:1.05rem;word-break:break-word}
+  .bank .iban{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.04em}
+  .copy{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-left:10px}
+  .copy:hover{border-color:var(--peach)}
+  .send{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .hug{font-family:"Instrument Serif",serif;font-size:1.6rem;margin-top:40px}
+  .sending{display:none;color:var(--muted);font-size:.9rem}
+  .sending.on{display:inline}
+  .fail{display:none;color:var(--err);margin-top:16px}
+  .fail.on{display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo" aria-label="Acronest"><img src="img/logo.png" alt=""><span aria-hidden="true"><i>A</i><i>C</i><i>R</i><i>O</i><i>N</i><i>E</i><i>S</i><i>T</i></span></a>
+  <div class="hright">
+    <a href="index.html" class="back" data-t="back">← Back to site</a>
+    <div class="langs"><button data-set="en">EN</button><button data-set="es">ES</button></div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside>
+    <img class="ilus" src="img/ilustracion.jpg" alt="">
+    <div>
+      <p class="eyebrow" data-t="a.eyebrow">Registration · 4th edition</p>
+      <h1>Acronest <span class="it grad">2027</span></h1>
+    </div>
+    <div class="meta">
+      <span><b data-t="a.dates">7 – 11 July 2027</b></span>
+      <span>Cortijo Casería del Mercado</span>
+      <span data-t="a.place">Las Alpujarras, Granada · Spain</span>
+    </div>
+    <div class="summary" id="summary">
+      <div class="row"><span data-t="s.nest">Nest</span><span id="s-nest">—</span></div>
+      <div class="row"><span data-t="s.type">Ticket</span><span id="s-type">—</span></div>
+      <div class="row total"><span data-t="s.total">Total</span><b id="s-total">—</b></div>
+      <p class="dep" data-t="s.dep">Today you only pay the €100 deposit by bank transfer.</p>
+    </div>
+  </aside>
+
+  <main>
+    <form id="form" novalidate>
+      <div class="steps" id="steps"><i></i><i></i><i></i><i></i><i></i></div>
+
+      <!-- 1 · Nido -->
+      <fieldset data-step="1" class="on">
+        <p class="stepno" data-t="st1.no">Step 1 of 5</p>
+        <h2 data-t="st1.t" data-html>Choose your <span class="it grad">nest</span></h2>
+        <p class="sub" data-t="st1.s">5 days, 4 nights. All activities, accommodation, meals, snacks and drinks included.</p>
+
+        <div class="mode">
+          <label><input type="radio" name="ticket" value="Solo" checked><span data-t="m.solo">Solo</span></label>
+          <label><input type="radio" name="ticket" value="Promo duo"><span data-t="m.duo">Promo duo · for two</span></label>
+        </div>
+
+        <div class="q" data-req="nest">
+          <div class="nests" id="nests">
+            <label class="nest"><input type="radio" name="nest" value="Outdoor nest" data-solo="420" data-duo="760" data-dorm="0"><span class="box"><b data-t="n1">Outdoor Nest</b><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><span class="pr">€<span class="v">420</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="8-person nest" data-solo="460" data-duo="840" data-dorm="1"><span class="box"><b data-t="n2">8-Person Nest</b><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><span class="pr">€<span class="v">460</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="4-person nest" data-solo="480" data-duo="880" data-dorm="1"><span class="box"><b data-t="n3">4-Person Nest</b><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><span class="pr">€<span class="v">480</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="2-person nest" data-solo="500" data-duo="920" data-dorm="1"><span class="box"><b data-t="n4">2-Person Nest</b><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><span class="pr">€<span class="v">500</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="Love nest" data-solo="520" data-duo="960" data-dorm="0"><span class="box"><b>Love Nest</b><p data-t="n5.p">Private room for 2 with private bathroom.</p><span class="pr">€<span class="v">520</span><small class="u">per person</small></span></span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q cond" id="c-partner" data-req="partner">
+          <label for="partner"><span data-t="q.partner">Name of your duo partner</span> <span class="req">*</span></label>
+          <input type="text" id="partner" name="partner" autocomplete="off">
+          <p class="err" data-t="e.req">This field is required.</p>
+        </div>
+
+        <div class="q cond" id="c-bed">
+          <span class="lbl" data-t="q.bed">In the dorm, what do you prefer?</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="bed" value="Single bed"><span data-t="b1">Single bed</span></label>
+            <label class="opt"><input type="radio" name="bed" value="Don't care"><span data-t="b2">I don't mind</span></label>
+            <label class="opt"><input type="radio" name="bed" value="Double bed to share with a friend"><span data-t="b3">Double bed to share with a friend</span></label>
+          </div>
+        </div>
+
+        <div class="q cond" id="c-share">
+          <label for="share" data-t="q.share">Who are you sharing the double bed with?</label>
+          <input type="text" id="share" name="share" autocomplete="off">
+        </div>
+      </fieldset>
+
+      <!-- 2 · Datos -->
+      <fieldset data-step="2">
+        <p class="stepno" data-t="st2.no">Step 2 of 5</p>
+        <h2 data-t="st2.t" data-html>Tell us <span class="it grad">about you</span></h2>
+        <p class="sub" data-t="st2.s">So we can stay in touch before the event.</p>
+        <div class="grid2">
+          <div class="q" data-req="name"><label for="name"><span data-t="q.name">Full name</span> <span class="req">*</span></label><input type="text" id="name" name="name" autocomplete="name"><p class="err" data-t="e.req">This field is required.</p></div>
+          <div class="q" data-req="email"><label for="email"><span data-t="q.email">Email</span> <span class="req">*</span></label><input type="email" id="email" name="email" autocomplete="email"><p class="err" data-t="e.email">Please enter a valid email.</p></div>
+          <div class="q" data-req="whatsapp"><label for="whatsapp"><span data-t="q.wa">WhatsApp number</span> <span class="req">*</span><span class="hint" data-t="q.wa.h">With country code, e.g. +34 600 000 000</span></label><input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel"><p class="err" data-t="e.req">This field is required.</p></div>
+          <div class="q"><label for="instagram">Instagram<span class="hint" data-t="opt">Optional</span></label><input type="text" id="instagram" name="instagram" placeholder="@"></div>
+          <div class="q" data-req="from"><label for="from"><span data-t="q.from">Where are you from?</span> <span class="req">*</span></label><input type="text" id="from" name="from" autocomplete="country-name"><p class="err" data-t="e.req">This field is required.</p></div>
+        </div>
+      </fieldset>
+
+      <!-- 3 · Práctica -->
+      <fieldset data-step="3">
+        <p class="stepno" data-t="st3.no">Step 3 of 5</p>
+        <h2 data-t="st3.t" data-html>Your <span class="it grad">practice</span></h2>
+        <p class="sub" data-t="st3.s">The more you tell us, the better schedule we can build for you.</p>
+
+        <div class="q" data-req="disciplines">
+          <span class="lbl"><span data-t="q.disc">Which disciplines interest you most?</span> <span class="req">*</span><span class="hint" data-t="q.multi">Choose all that apply</span></span>
+          <div class="opts">
+            <label class="opt"><input type="checkbox" name="disciplines" value="L-basing Flow"><span>L-basing Flow</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Whips/whipops"><span>Whips / whipops</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Icarian"><span>Icarian</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Standing duo"><span>Standing duo</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Troupe"><span>Troupe</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Handstand"><span>Handstand</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Acrobatics"><span data-t="d.acro">Acrobatics</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Yoga"><span>Yoga</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Dance"><span data-t="d.dance">Dance</span></label>
+            <label class="opt"><input type="checkbox" name="disciplines" value="Massage"><span data-t="d.mass">Massage</span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q" data-req="level">
+          <span class="lbl"><span data-t="q.level">What is your level?</span> <span class="req">*</span></span>
+          <div class="opts col">
+            <label class="opt"><input type="radio" name="level" value="Beginner"><span><b data-t="l1">Beginner</b><small data-t="l1.d">Never done it, or first times practising.</small></span></label>
+            <label class="opt"><input type="radio" name="level" value="Beginner/Intermediate"><span><b data-t="l2">Beginner / Intermediate</b><small data-t="l2.d">Knowledge of basic figures and flows, or icarians / standing.</small></span></label>
+            <label class="opt"><input type="radio" name="level" value="Intermediate"><span><b data-t="l3">Intermediate</b><small data-t="l3.d">Consistent practice as spotter, base or flyer in dynamic tricks.</small></span></label>
+            <label class="opt"><input type="radio" name="level" value="Intermediate/Advanced"><span><b data-t="l4">Intermediate / Advanced</b><small data-t="l4.d">Improving and exploring more advanced tricks with spotters.</small></span></label>
+            <label class="opt"><input type="radio" name="level" value="Advanced"><span><b data-t="l5">Advanced</b><small data-t="l5.d">Safe in tricks, with good fall resolution and spotting.</small></span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q" data-req="role">
+          <span class="lbl"><span data-t="q.role">Which role do you prefer?</span> <span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="role" value="Flyer"><span>Flyer</span></label>
+            <label class="opt"><input type="radio" name="role" value="Base"><span>Base</span></label>
+            <label class="opt"><input type="radio" name="role" value="Hybrid"><span data-t="r.hyb">Hybrid</span></label>
+            <label class="opt"><input type="radio" name="role" value="Spotter"><span>Spotter</span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q" data-req="experience">
+          <label for="experience"><span data-t="q.exp">Tell us about your practice and experience</span> <span class="req">*</span></label>
+          <textarea id="experience" name="experience"></textarea>
+          <p class="err" data-t="e.req">This field is required.</p>
+        </div>
+      </fieldset>
+
+      <!-- 4 · Comida -->
+      <fieldset data-step="4">
+        <p class="stepno" data-t="st4.no">Step 4 of 5</p>
+        <h2 data-t="st4.t" data-html>Food <span class="it grad">&amp; more</span></h2>
+        <p class="sub" data-t="st4.s">Our kitchen takes care of you all week.</p>
+
+        <div class="q" data-req="diet">
+          <span class="lbl"><span data-t="q.diet">About food</span> <span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="diet" value="I eat everything"><span data-t="f1">I eat everything</span></label>
+            <label class="opt"><input type="radio" name="diet" value="Veggie"><span data-t="f2">Vegetarian</span></label>
+            <label class="opt"><input type="radio" name="diet" value="Vegan"><span data-t="f3">Vegan</span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q" data-req="allergies">
+          <label for="allergies"><span data-t="q.all">Any food allergies or restrictions?</span> <span class="req">*</span><span class="hint" data-t="q.all.h">Write “no” if you have none</span></label>
+          <input type="text" id="allergies" name="allergies">
+          <p class="err" data-t="e.req">This field is required.</p>
+        </div>
+
+        <div class="q">
+          <label for="source"><span data-t="q.src">How did you find out about Acronest?</span><span class="hint" data-t="q.src.h">Friend, Instagram, etc. — optional</span></label>
+          <input type="text" id="source" name="source">
+        </div>
+      </fieldset>
+
+      <!-- 5 · Pago -->
+      <fieldset data-step="5">
+        <p class="stepno" data-t="st5.no">Step 5 of 5</p>
+        <h2 data-t="st5.t" data-html>Secure your <span class="it grad">place</span></h2>
+        <p class="sub" data-t="st5.s">To save your spot we ask for a €100 deposit by bank transfer. You will see the bank details on the next screen.</p>
+
+        <div class="q" data-req="payment">
+          <span class="lbl"><span data-t="q.pay">How would you like to pay the rest?</span> <span class="req">*</span></span>
+          <div class="opts col">
+            <label class="opt"><input type="radio" name="payment" value="100€ + cash at the event"><span><b data-t="p1">€100 now + the rest in cash at the event</b></span></label>
+            <label class="opt"><input type="radio" name="payment" value="100€ + 3 installments"><span><b data-t="p2">€100 now + the rest in 3 installments</b></span></label>
+            <label class="opt"><input type="radio" name="payment" value="Other"><span><b data-t="p3">Other — we'll talk</b></span></label>
+          </div>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
+        <div class="q cond" id="c-other">
+          <label for="payother" data-t="q.other">Tell us what you have in mind</label>
+          <input type="text" id="payother" name="payother">
+        </div>
+
+        <div class="q" data-req="terms">
+          <label class="check"><input type="checkbox" name="terms" value="yes"><span data-t="q.terms">I understand that tickets are non-refundable, but can be transferred to someone else until the day before the event (updated to the current price).</span></label>
+          <p class="err" data-t="e.terms">Please accept to continue.</p>
+        </div>
+      </fieldset>
+
+      <div class="nav" id="nav">
+        <button type="button" class="btn line hide" id="prev" data-t="prev">← Back</button>
+        <span class="sending" id="sending" data-t="sending">Sending…</span>
+        <button type="button" class="btn fill" id="next"><span data-t="next">Continue</span> <span>→</span></button>
+      </div>
+      <p class="fail" id="fail" data-t="fail">Something went wrong sending your registration. Please try again, or write to us at acronest.fest@gmail.com.</p>
+    </form>
+
+    <!-- Pantalla final -->
+    <section class="done" id="done">
+      <p class="stepno" data-t="d.no">Registration received</p>
+      <h2 data-html data-t="d.t">Welcome to <span class="it grad">the nest</span></h2>
+      <p class="sub" data-t="d.s">Your place is reserved once we receive the €100 deposit. Here are the details for the bank transfer:</p>
+
+      <div class="bank">
+        <div class="row"><span data-t="k.amount">Amount</span><b>€100</b></div>
+        <div class="row"><span data-t="k.holder">Account holder</span><b>Joaquín Ricardo Castillo Hadler</b></div>
+        <div class="row"><span>IBAN</span><b><span class="iban" id="iban">ES45 2100 0365 3202 0022 3160</span><button type="button" class="copy" id="copy" data-t="k.copy">Copy</button></b></div>
+        <div class="row"><span data-t="k.ref">Reference</span><b id="ref">ACRONEST 2027</b></div>
+      </div>
+
+      <p data-t="d.send">Once you've paid, send us the receipt:</p>
+      <div class="send">
+        <a class="btn fill" id="wa1" target="_blank" rel="noopener" href="https://wa.me/5491123357818">WhatsApp · Rober ↗</a>
+        <a class="btn line" id="wa2" target="_blank" rel="noopener" href="https://wa.me/56998419773">WhatsApp · Conitrini ↗</a>
+        <a class="btn line" id="mail" href="mailto:acronest.fest@gmail.com">Email ↗</a>
+      </div>
+
+      <p class="hug" data-t="d.hug">See you at the Nest. Big hug, Coni &amp; Rob.</p>
+      <p style="margin-top:30px"><a href="index.html" class="back" data-t="back">← Back to site</a></p>
+    </section>
+  </main>
+</div>
+
+<script>
+// Dirección donde se guardan las inscripciones (Google Apps Script). Vacío = modo prueba.
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwLyKn5WNf2My2HKGJzTMWqv3qb-18-fRrMUCCd4Y3X6uOSFXy88QXy_oO-PlpNa1bq/exec';
+
+var ES = {
+  "back":"← Volver a la web","a.eyebrow":"Inscripción · 4ª edición","a.dates":"7 – 11 de julio de 2027","a.place":"Las Alpujarras, Granada · España",
+  "s.nest":"Nido","s.type":"Entrada","s.total":"Total","s.dep":"Hoy solo pagas la seña de 100 € por transferencia.",
+  "st1.no":"Paso 1 de 5","st1.t":"Elige tu <span class=\"it grad\">nido</span>","st1.s":"5 días, 4 noches. Incluye todas las actividades, alojamiento, comidas, snacks y bebidas.",
+  "m.solo":"Individual","m.duo":"Promo dúo · para dos",
+  "n1":"Nido exterior","n1.p":"Acampada en tu tienda o camper. Baños y duchas compartidos.",
+  "n2":"Nido de 8","n2.p":"Habitación compartida para 8. Baños y duchas compartidos.",
+  "n3":"Nido de 4","n3.p":"Habitación compartida para 4. Baños y duchas compartidos.",
+  "n4":"Nido de 2","n4.p":"Habitación compartida para 2. Baños y duchas compartidos.",
+  "n5.p":"Habitación privada para 2 con baño privado.",
+  "q.partner":"Nombre de tu pareja de dúo","q.bed":"En la habitación compartida, ¿qué prefieres?","b1":"Cama individual","b2":"Me da igual","b3":"Cama doble para compartir con alguien",
+  "q.share":"¿Con quién compartes la cama doble?",
+  "st2.no":"Paso 2 de 5","st2.t":"Cuéntanos <span class=\"it grad\">de ti</span>","st2.s":"Para estar en contacto antes del evento.",
+  "q.name":"Nombre y apellido","q.email":"Correo electrónico","q.wa":"Número de WhatsApp","q.wa.h":"Con código de país, ej. +34 600 000 000","opt":"Opcional","q.from":"¿De dónde eres?",
+  "st3.no":"Paso 3 de 5","st3.t":"Tu <span class=\"it grad\">práctica</span>","st3.s":"Cuanto más nos cuentes, mejor podemos armar el programa para ti.",
+  "q.disc":"¿Qué disciplinas te interesan más?","q.multi":"Elige todas las que quieras","d.acro":"Acrobacia","d.dance":"Danza","d.mass":"Masaje",
+  "q.level":"¿Cuál es tu nivel?","l1":"Principiante","l1.d":"Nunca lo hice, o son mis primeras veces.","l2":"Principiante / Intermedio","l2.d":"Conozco figuras y flows básicos, o icarians / standing.",
+  "l3":"Intermedio","l3.d":"Práctica constante como spotter, base o flyer en trucos dinámicos.","l4":"Intermedio / Avanzado","l4.d":"Mejorando y explorando trucos más avanzados con spotters.",
+  "l5":"Avanzado","l5.d":"Seguridad en los trucos, buena resolución de caídas y spotting.",
+  "q.role":"¿Qué rol prefieres?","r.hyb":"Híbrido","q.exp":"Cuéntanos sobre tu práctica y experiencia",
+  "st4.no":"Paso 4 de 5","st4.t":"Comida <span class=\"it grad\">y más</span>","st4.s":"Nuestra cocina te cuida toda la semana.",
+  "q.diet":"Sobre la comida","f1":"Como de todo","f2":"Vegetariano","f3":"Vegano",
+  "q.all":"¿Tienes alguna alergia o restricción alimentaria?","q.all.h":"Escribe “no” si no tienes","q.src":"¿Cómo te enteraste de Acronest?","q.src.h":"Amigos, Instagram, etc. — opcional",
+  "st5.no":"Paso 5 de 5","st5.t":"Reserva tu <span class=\"it grad\">plaza</span>","st5.s":"Para reservar tu plaza pedimos una seña de 100 € por transferencia bancaria. En la pantalla siguiente verás los datos.",
+  "q.pay":"¿Cómo quieres pagar el resto?","p1":"100 € ahora + el resto en efectivo en el evento","p2":"100 € ahora + el resto en 3 cuotas","p3":"Otra forma — lo hablamos",
+  "q.other":"Cuéntanos qué tienes en mente",
+  "q.terms":"Entiendo que las entradas no son reembolsables, pero se pueden transferir a otra persona hasta el día anterior al evento (actualizadas al precio vigente).",
+  "e.req":"Este campo es obligatorio.","e.pick":"Elige una opción.","e.email":"Escribe un correo válido.","e.terms":"Acepta para continuar.",
+  "prev":"← Atrás","next":"Continuar","send":"Enviar inscripción","sending":"Enviando…",
+  "fail":"No pudimos enviar tu inscripción. Prueba de nuevo o escríbenos a acronest.fest@gmail.com.",
+  "d.no":"Inscripción recibida","d.t":"Bienvenido/a <span class=\"it grad\">al nido</span>","d.s":"Tu plaza queda reservada cuando recibamos la seña de 100 €. Estos son los datos para la transferencia:",
+  "k.amount":"Importe","k.holder":"Titular","k.copy":"Copiar","k.copied":"¡Copiado!","k.ref":"Concepto",
+  "d.send":"Cuando hayas pagado, envíanos el comprobante:","d.hug":"Nos vemos en el Nido. Un abrazo grande, Coni y Rob.",
+  "u.pp":"por persona","u.two":"para dos"
+};
+var EN = {};
+document.querySelectorAll('[data-t]').forEach(function(el){ EN[el.dataset.t] = el.hasAttribute('data-html') ? el.innerHTML : el.textContent; });
+EN["send"] = "Send registration"; EN["k.copied"] = "Copied!"; EN["u.pp"] = "per person"; EN["u.two"] = "for two";
+var lang = 'en';
+function t(k){ var d = lang === 'es' ? ES : EN; return d[k] != null ? d[k] : (EN[k] || k); }
+function setLang(l){
+  lang = l;
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var v = (l === 'es' ? ES : EN)[el.dataset.t]; if (v == null) return;
+    if (el.hasAttribute('data-html')) el.innerHTML = v; else el.textContent = v;
+  });
+  document.documentElement.lang = l;
+  document.title = l === 'es' ? 'Inscripción · Acronest 2027' : 'Register · Acronest 2027';
+  document.querySelectorAll('.langs button').forEach(function(b){ b.classList.toggle('on', b.dataset.set === l); });
+  try { localStorage.setItem('acronest-lang', l); } catch(e){}
+  updatePrices(); updateButtons();
+}
+
+var form = document.getElementById('form');
+var steps = [].slice.call(document.querySelectorAll('fieldset'));
+var cur = 0;
+function val(name){ var el = form.elements[name]; if (!el) return ''; if (el.length !== undefined && !el.tagName){ var c = [].filter.call(el, function(x){ return x.checked; }); return c.length ? c.map(function(x){ return x.value; }).join(', ') : ''; } if (el.type === 'checkbox' || el.type === 'radio') return el.checked ? el.value : ''; return el.value.trim(); }
+
+function updatePrices(){
+  var duo = val('ticket') === 'Promo duo';
+  document.querySelectorAll('#nests input').forEach(function(i){
+    var box = i.nextElementSibling;
+    box.querySelector('.v').textContent = duo ? i.dataset.duo : i.dataset.solo;
+    box.querySelector('.u').textContent = duo ? t('u.two') : t('u.pp');
+  });
+  var n = form.querySelector('input[name=nest]:checked');
+  document.getElementById('s-nest').textContent = n ? n.nextElementSibling.querySelector('b').textContent : '—';
+  document.getElementById('s-type').textContent = duo ? t('m.duo') : t('m.solo');
+  document.getElementById('s-total').textContent = n ? '€' + (duo ? n.dataset.duo : n.dataset.solo) : '—';
+  var dorm = n && n.dataset.dorm === '1';
+  document.getElementById('c-partner').classList.toggle('show', duo);
+  document.getElementById('c-bed').classList.toggle('show', !!dorm);
+  document.getElementById('c-share').classList.toggle('show', !!dorm && val('bed').indexOf('Double') === 0);
+  document.getElementById('c-other').classList.toggle('show', val('payment') === 'Other');
+}
+form.addEventListener('change', function(e){ updatePrices(); var q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
+form.addEventListener('input', function(e){ var q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
+
+function validStep(i){
+  var ok = true, first = null;
+  steps[i].querySelectorAll('.q[data-req]').forEach(function(q){
+    if (q.classList.contains('cond') && !q.classList.contains('show')) return;
+    var k = q.dataset.req, v = val(k), bad = !v;
+    if (k === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) bad = true;
+    q.classList.toggle('bad', bad);
+    if (bad){ ok = false; if (!first) first = q; }
+  });
+  if (first){ first.scrollIntoView({behavior:'smooth', block:'center'}); var f = first.querySelector('input,textarea'); if (f) setTimeout(function(){ f.focus({preventScroll:true}); }, 300); }
+  return ok;
+}
+function updateButtons(){
+  document.getElementById('prev').classList.toggle('hide', cur === 0);
+  document.querySelector('#next span').textContent = cur === steps.length - 1 ? t('send') : t('next');
+  document.querySelectorAll('#steps i').forEach(function(b, i){ b.classList.toggle('lit', i <= cur); });
+}
+function go(i){
+  steps[cur].classList.remove('on'); cur = i; steps[cur].classList.add('on');
+  updateButtons(); window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prev').onclick = function(){ if (cur > 0) go(cur - 1); };
+document.getElementById('next').onclick = function(){
+  if (!validStep(cur)) return;
+  if (cur < steps.length - 1) go(cur + 1); else submit();
+};
+
+function collect(){
+  var n = form.querySelector('input[name=nest]:checked'), duo = val('ticket') === 'Promo duo';
+  return {
+    edition: 'Acronest 2027', language: lang,
+    name: val('name'), email: val('email'), whatsapp: val('whatsapp'), instagram: val('instagram'), from: val('from'),
+    ticket: val('ticket'), nest: val('nest'), price: n ? Number(duo ? n.dataset.duo : n.dataset.solo) : '',
+    partner: duo ? val('partner') : '', bed: n && n.dataset.dorm === '1' ? val('bed') : '', share_with: val('share'),
+    disciplines: val('disciplines'), level: val('level'), role: val('role'), experience: val('experience'),
+    diet: val('diet'), allergies: val('allergies'), source: val('source'),
+    payment: val('payment'), payment_other: val('payment') === 'Other' ? val('payother') : '', terms: val('terms') ? 'Accepted' : ''
+  };
+}
+// Evita que la planilla interprete como fórmula los textos que empiezan con + = - @ (ej. teléfonos)
+function safeForSheet(d){
+  var o = {};
+  Object.keys(d).forEach(function(k){ var v = d[k]; o[k] = (typeof v === 'string' && /^[=+\-@]/.test(v)) ? "'" + v : v; });
+  return o;
+}
+function submit(){
+  var data = collect(), next = document.getElementById('next');
+  next.disabled = true; document.getElementById('sending').classList.add('on'); document.getElementById('fail').classList.remove('on');
+  var done = function(){ showDone(data); };
+  if (!ENDPOINT){ console.log('Modo prueba — inscripción:', data); setTimeout(done, 700); return; }
+  fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(safeForSheet(data)) })
+    .then(function(r){ return r.json().catch(function(){ return {ok:true}; }); })
+    .then(function(r){ if (r && r.ok === false) throw new Error(r.error || 'error'); done(); })
+    .catch(function(){
+      next.disabled = false; document.getElementById('sending').classList.remove('on'); document.getElementById('fail').classList.add('on');
+    });
+}
+function showDone(d){
+  form.style.display = 'none';
+  document.getElementById('done').classList.add('on');
+  var ref = 'ACRONEST 2027 · ' + d.name;
+  document.getElementById('ref').textContent = ref;
+  var msg = encodeURIComponent((lang === 'es' ? 'Hola! Envío el comprobante de la seña de Acronest 2027 — ' : 'Hi! Here is my Acronest 2027 deposit receipt — ') + d.name);
+  document.getElementById('wa1').href = 'https://wa.me/5491123357818?text=' + msg;
+  document.getElementById('wa2').href = 'https://wa.me/56998419773?text=' + msg;
+  document.getElementById('mail').href = 'mailto:acronest.fest@gmail.com?subject=' + encodeURIComponent(ref) + '&body=' + msg;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('copy').onclick = function(){
+  var b = this, txt = document.getElementById('iban').textContent.replace(/\s/g, '');
+  (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function(){ b.textContent = t('k.copied'); setTimeout(function(){ b.textContent = t('k.copy'); }, 1800); }).catch(function(){});
+};
+
+var saved = null; try { saved = localStorage.getItem('acronest-lang'); } catch(e){}
+setLang(saved || ((navigator.language||'').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
+document.querySelectorAll('.langs button').forEach(function(b){ b.onclick = function(){ setLang(b.dataset.set); }; });
+</script>
+</body>
+</html>

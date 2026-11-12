@@ -1,0 +1,11 @@
+# Archivos que no se publican
+.claude/
+Diseño acronest/
+.DS_Store
+# Fotos descargadas que la web no usa
+img/f19.jpg
+img/f20.jpg
+img/f21.jpg
+img/f23.jpg
+img/f34.jpg
+img/f49.jpg
