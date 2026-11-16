@@ -213,6 +213,47 @@
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
+  /* Botones extra de la portada */
+  .hero .actions.more{margin-top:12px}
+  .hero .actions.more .btn{padding:13px 22px;font-size:.74rem;background:rgba(3,4,5,.35);backdrop-filter:blur(6px)}
+
+  /* Ventanas (profes / cronograma) */
+  .modal{position:fixed;inset:0;z-index:150;background:rgba(3,4,5,.78);backdrop-filter:blur(10px);display:flex;align-items:flex-start;justify-content:center;padding:clamp(12px,4vw,48px);overflow-y:auto;opacity:0;transition:opacity .3s}
+  .modal[hidden]{display:none}
+  .modal.on{opacity:1}
+  .m-box{position:relative;width:min(1080px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:clamp(28px,5vw,56px);box-shadow:0 40px 120px -30px rgba(234,161,55,.35);transform:translateY(20px);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .modal.on .m-box{transform:none}
+  .m-box h2{margin:14px 0 14px}
+  .m-box .lead{margin-bottom:34px}
+  .m-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;transition:border-color .2s,transform .3s}
+  .m-close:hover{border-color:var(--peach);transform:rotate(90deg)}
+  body.locked{overflow:hidden}
+
+  .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+  .tm .pic{aspect-ratio:4/5;border-radius:200px 200px 8px 8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(234,161,55,.35),transparent 60%),#0f1019;border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;margin-bottom:14px}
+  .tm .pic img{width:100%;height:100%;object-fit:cover}
+  .tm .pic svg{width:58%;opacity:.35;margin-bottom:-2px}
+  .tm h3{font-weight:800;font-stretch:112%;text-transform:uppercase;font-size:1rem;line-height:1.15}
+  .tm .role{color:var(--peach);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:4px 0}
+  .tm .from{color:var(--muted);font-size:.85rem}
+
+  .days{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+  .days button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:12px 18px;cursor:pointer;font:inherit;text-align:left;transition:.25s;min-width:110px}
+  .days button b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:1.6rem;line-height:1;color:var(--ink)}
+  .days button small{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+  .days button.on{border-color:var(--peach);background:rgba(234,161,55,.1)}
+  .days button.on small{color:var(--peach)}
+  .slots{list-style:none;border-top:1px solid var(--line)}
+  .slots li{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);animation:in .4s both}
+  .slots time{font-family:"Instrument Serif",serif;font-size:1.35rem;color:var(--peach)}
+  .slots .what b{display:block;font-weight:500;font-size:1.05rem}
+  .slots .what span{color:var(--muted);font-size:.88rem}
+  .slots .stag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted);white-space:nowrap}
+  .slots .stag.move{border-color:rgba(234,161,55,.5);color:var(--peach)}
+  .slots .stag.night{border-color:rgba(142,156,242,.5);color:var(--lav,#8e9cf2)}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}}
+  @media (max-width:560px){.slots li{grid-template-columns:64px 1fr}.slots .stag{display:none}.days button{min-width:0;flex:1}}
+
   /* Visor de fotos */
   .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:30px}
   .lightbox.on{display:flex}
@@ -228,6 +269,8 @@
       <li><a href="#experience" data-t="nav.exp">Experience</a></li>
       <li><a href="#venue" data-t="nav.venue">The venue</a></li>
       <li><a href="#gallery" data-t="nav.gallery">Gallery</a></li>
+      <li><a href="#teachers" data-open="m-team" data-t="nav.team">Teachers</a></li>
+      <li><a href="#schedule" data-open="m-sched" data-t="nav.sched">Schedule</a></li>
       <li><a href="#faq" data-t="nav.faq">FAQ</a></li>
     </ul>
     <div class="right">
@@ -253,6 +296,10 @@
         <div class="actions">
           <a href="#tickets" class="btn fill"><span data-t="hero.cta">Secure your place</span><span class="arr">→</span></a>
           <a href="#gallery" class="btn line" data-t="hero.cta2">Past editions</a>
+        </div>
+        <div class="actions more">
+          <button type="button" class="btn line" data-open="m-team"><span data-t="b.team">The teachers</span><span class="arr">↗</span></button>
+          <button type="button" class="btn line" data-open="m-sched"><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
         </div>
       </div>
       <div class="cd" aria-label="Countdown">
@@ -398,6 +445,29 @@
   </div>
 </footer>
 
+<!-- Ventana: el equipo -->
+<div class="modal" id="m-team" role="dialog" aria-modal="true" aria-labelledby="m-team-t" hidden>
+  <div class="m-box">
+    <button type="button" class="m-close" aria-label="Close">×</button>
+    <p class="eyebrow" data-t="team.eyebrow">The team · 2027</p>
+    <h2 id="m-team-t" data-t="team.title" data-html>The <span class="it grad">teachers</span></h2>
+    <p class="lead" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Full line-up coming soon.</p>
+    <div class="team" id="team"></div>
+  </div>
+</div>
+
+<!-- Ventana: cronograma -->
+<div class="modal" id="m-sched" role="dialog" aria-modal="true" aria-labelledby="m-sched-t" hidden>
+  <div class="m-box">
+    <button type="button" class="m-close" aria-label="Close">×</button>
+    <p class="eyebrow" data-t="sch.eyebrow">7 – 11 July 2027</p>
+    <h2 id="m-sched-t" data-t="sch.title" data-html>The <span class="it grad">schedule</span></h2>
+    <p class="lead" data-t="sch.lead">A guide to how the days flow. The detailed timetable with every workshop will be published before the event.</p>
+    <div class="days" id="days" role="tablist"></div>
+    <ol class="slots" id="slots"></ol>
+  </div>
+</div>
+
 <div class="lightbox" id="lb"><div></div></div>
 
 <script>
@@ -407,6 +477,11 @@ var ES = {
   "hero.eyebrow":"Evento de acrobacia y movimiento · Granada, España","hero.year":"4ª edición · 2027",
   "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde","hero.place":"Las Alpujarras",
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
+  "nav.team":"Profes","nav.sched":"Cronograma","b.team":"Los profes","b.sched":"Cronograma",
+  "team.eyebrow":"El equipo · 2027","team.title":"Los <span class=\"it grad\">profes</span>",
+  "team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. El equipo completo, muy pronto.",
+  "sch.eyebrow":"7 – 11 de julio de 2027","sch.title":"El <span class=\"it grad\">cronograma</span>",
+  "sch.lead":"Una guía de cómo fluyen los días. El horario detallado con cada taller se publica antes del evento.",
   "cd.d":"días","cd.h":"horas","cd.m":"min",
   "man.eyebrow":"El nido","man.text":"Cinco días donde el cuerpo aprende a <em class=\"grad\">volar</em>, a confiar y a aterrizar suave. Un encuentro íntimo para quienes se mueven — en un lugar hecho para recordar.",
   "st.days":"días","st.n":"4ª","st.ed":"edición","st.teach":"profes","st.mem":"recuerdos",
@@ -491,6 +566,96 @@ if ('IntersectionObserver' in window) {
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+// ── Profes y cronograma (para cambiar los datos, editar estas listas) ──
+// Profes: name, from, role {en, es}, photo (ej. 'img/profes/ana.jpg'; vacío = silueta)
+var TEAM = [
+  {name:'Teacher name', from:'Country', role:{en:'Acroyoga · L-basing', es:'Acroyoga · L-basing'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Icarians', es:'Icarios'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Whips & whipops', es:'Whips y whipops'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Handstands', es:'Equilibrios de manos'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Standing & acroduo', es:'Standing y acrodúo'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Soft acrobatics', es:'Acrobacia suave'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Massage', es:'Masaje'}, photo:''},
+  {name:'Teacher name', from:'Country', role:{en:'Yoga & mobility', es:'Yoga y movilidad'}, photo:''}
+];
+// Cronograma: un día por fila; cada actividad = [hora, {en,es} título, {en,es} detalle, tipo: move | food | night | ''].
+var T = function(en, es){ return {en:en, es:es}; };
+var REST = [
+  ['08:30', T('Breakfast','Desayuno'), T('',''), 'food'],
+  ['09:30', T('Morning practice','Práctica de la mañana'), T('Warm-up, handstands & mobility','Calentamiento, equilibrios y movilidad'), 'move'],
+  ['10:30', T('Workshops · block 1','Talleres · bloque 1'), T('Parallel classes by level','Clases en paralelo por nivel'), 'move'],
+  ['13:30', T('Lunch & siesta','Almuerzo y siesta'), T('Pool time','Tiempo de piscina'), 'food'],
+  ['16:30', T('Workshops · block 2','Talleres · bloque 2'), T('Parallel classes by level','Clases en paralelo por nivel'), 'move'],
+  ['18:30', T('Sunset jam','Jam al atardecer'), T('Open practice','Práctica libre'), 'move'],
+  ['20:30', T('Dinner','Cena'), T('',''), 'food']
+];
+function day(extra){ return REST.concat([extra]); }
+var SCHEDULE = [
+  {d:'7',  wd:T('Wed','Mié'), items:[
+    ['16:00', T('Check-in & welcome','Check-in y bienvenida'), T('Settle into your nest','Acomódate en tu nido'), ''],
+    ['18:30', T('Opening circle','Círculo de apertura'), T('Meet the team and the community','Conoce al equipo y a la comunidad'), 'move'],
+    ['20:30', T('Welcome dinner','Cena de bienvenida'), T('',''), 'food'],
+    ['22:00', T('Welcome jam','Jam de bienvenida'), T('',''), 'night']]},
+  {d:'8',  wd:T('Thu','Jue'), items:day(['22:00', T('Massage & chill night','Noche de masajes y relax'), T('',''), 'night'])},
+  {d:'9',  wd:T('Fri','Vie'), items:day(['22:00', T('Show night','Noche de show'), T('Performances by teachers and participants','Shows de profes y participantes'), 'night'])},
+  {d:'10', wd:T('Sat','Sáb'), items:day(['22:00', T('Party under the stars','Fiesta bajo las estrellas'), T('',''), 'night'])},
+  {d:'11', wd:T('Sun','Dom'), items:[
+    ['08:30', T('Breakfast','Desayuno'), T('',''), 'food'],
+    ['10:00', T('Closing workshop','Taller de cierre'), T('',''), 'move'],
+    ['12:30', T('Closing circle','Círculo de cierre'), T('',''), 'move'],
+    ['13:30', T('Farewell lunch','Almuerzo de despedida'), T('',''), 'food'],
+    ['17:00', T('Check-out','Check-out'), T('See you next year!','¡Nos vemos el año que viene!'), '']]}
+];
+var TAGS = {move:T('Movement','Movimiento'), food:T('Food','Comida'), night:T('Night','Noche')};
+var silhouette = '<svg viewBox="0 0 100 120" fill="#eaa137"><circle cx="50" cy="32" r="20"/><path d="M10 120c0-26 18-44 40-44s40 18 40 44z"/></svg>';
+var curDay = 0;
+function L(){ return document.documentElement.lang === 'es' ? 'es' : 'en'; }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function renderTeam(){
+  var l = L();
+  document.getElementById('team').innerHTML = TEAM.map(function(p){
+    return '<article class="tm"><div class="pic">' + (p.photo ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" loading="lazy">' : silhouette) + '</div>'
+      + '<h3>' + esc(p.name) + '</h3><p class="role">' + esc(p.role[l]) + '</p><p class="from">' + esc(p.from) + '</p></article>';
+  }).join('');
+}
+function renderSchedule(){
+  var l = L();
+  document.getElementById('days').innerHTML = SCHEDULE.map(function(d, i){
+    return '<button type="button" role="tab" aria-selected="' + (i === curDay) + '" class="' + (i === curDay ? 'on' : '') + '" data-i="' + i + '"><b>' + d.d + '</b><small>' + d.wd[l] + '</small></button>';
+  }).join('');
+  document.getElementById('slots').innerHTML = SCHEDULE[curDay].items.map(function(it){
+    var tag = it[3] ? '<span class="stag ' + it[3] + '">' + TAGS[it[3]][l] + '</span>' : '<span></span>';
+    return '<li><time>' + it[0] + '</time><div class="what"><b>' + esc(it[1][l]) + '</b>' + (it[2][l] ? '<span>' + esc(it[2][l]) + '</span>' : '') + '</div>' + tag + '</li>';
+  }).join('');
+}
+document.getElementById('days').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if (!b) return; curDay = +b.dataset.i; renderSchedule();
+});
+var lastFocus = null;
+function openModal(id){
+  var m = document.getElementById(id); lastFocus = document.activeElement;
+  m.hidden = false; document.body.classList.add('locked');
+  requestAnimationFrame(function(){ m.classList.add('on'); }); m.querySelector('.m-close').focus();
+}
+function closeModal(m){
+  m.classList.remove('on'); document.body.classList.remove('locked');
+  setTimeout(function(){ m.hidden = true; }, 300); if (lastFocus) lastFocus.focus();
+}
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click', function(e){ e.preventDefault(); openModal(b.dataset.open); });
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  m.addEventListener('click', function(e){ if (e.target === m || e.target.closest('.m-close')) closeModal(m); });
+});
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Escape') return; var m = document.querySelector('.modal.on'); if (m) closeModal(m);
+});
+function renderModals(){ renderTeam(); renderSchedule(); }
+renderModals();
+document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', renderModals); });
+if (location.hash === '#teachers') openModal('m-team');
+if (location.hash === '#schedule') openModal('m-sched');
 
 // ── Visor de fotos ──
 var lb = document.getElementById('lb');
