@@ -181,6 +181,9 @@
   .nest .price b{font-weight:400;font-size:2.4rem;line-height:1}
   .nest .price small{display:block;font-family:Archivo,sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
   .nest.love{border-color:rgba(234,161,55,.45)}
+  .nest .book{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.75;transition:opacity .3s}
+  .nest:hover .book,.nest:focus-visible .book{opacity:1}
+  .nest:focus-visible{outline:2px solid var(--peach);outline-offset:3px}
   .deposit{color:var(--muted);font-size:.9rem;margin-top:18px}
   @media (max-width:1000px){.nests{grid-template-columns:repeat(2,1fr)}.nest.love{grid-column:span 2}}
   @media (max-width:520px){.nests{grid-template-columns:1fr}.nest.love{grid-column:auto}}
@@ -397,15 +400,15 @@
     <h2 class="reveal" data-t="tk.title" data-html>Choose<br>your <span class="it grad">nest</span></h2>
     <p class="lead reveal" data-t="tk.text">5 days, 4 nights. Every ticket includes all activities, accommodation, daily meals, snacks and drinks.</p>
     <div class="mode reveal" role="tablist">
-      <button class="on" data-mode="solo" data-t="tk.solo">Solo</button>
-      <button data-mode="duo" data-t="tk.duo">Promo duo · for two</button>
+      <button class="on" data-mode="solo" data-t="tk.solo">Launch promo</button>
+      <button data-mode="duo" data-t="tk.duo" hidden>Promo duo · for two</button>
     </div>
     <div class="nests reveal">
-      <article class="nest" data-solo="420" data-duo="760"><h3 data-t="n1.t">Outdoor Nest</h3><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><div class="price">€<b>420</b><small data-t="tk.pp">per person</small></div></article>
-      <article class="nest" data-solo="460" data-duo="840"><h3 data-t="n2.t">8-Person Nest</h3><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><div class="price">€<b>460</b><small data-t="tk.pp">per person</small></div></article>
-      <article class="nest" data-solo="480" data-duo="880"><h3 data-t="n3.t">4-Person Nest</h3><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><div class="price">€<b>480</b><small data-t="tk.pp">per person</small></div></article>
-      <article class="nest" data-solo="500" data-duo="920"><h3 data-t="n4.t">2-Person Nest</h3><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><div class="price">€<b>500</b><small data-t="tk.pp">per person</small></div></article>
-      <article class="nest love" data-solo="520" data-duo="960"><h3>Love Nest</h3><p data-t="n5.p">Private room for 2 with private bathroom.</p><div class="price">€<b>520</b><small data-t="tk.pp">per person</small></div></article>
+      <a class="nest" href="inscripcion.html?nest=Outdoor%20nest" data-solo="400"><h3 data-t="n1.t">Outdoor Nest</h3><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><div class="price">€<b>400</b><small data-t="tk.pp">per person</small></div><span class="book" data-t="tk.book">Book this nest →</span></a>
+      <a class="nest" href="inscripcion.html?nest=8-person%20nest" data-solo="440"><h3 data-t="n2.t">8-Person Nest</h3><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><div class="price">€<b>440</b><small data-t="tk.pp">per person</small></div><span class="book" data-t="tk.book">Book this nest →</span></a>
+      <a class="nest" href="inscripcion.html?nest=4-person%20nest" data-solo="460"><h3 data-t="n3.t">4-Person Nest</h3><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><div class="price">€<b>460</b><small data-t="tk.pp">per person</small></div><span class="book" data-t="tk.book">Book this nest →</span></a>
+      <a class="nest" href="inscripcion.html?nest=2-person%20nest" data-solo="480"><h3 data-t="n4.t">2-Person Nest</h3><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><div class="price">€<b>480</b><small data-t="tk.pp">per person</small></div><span class="book" data-t="tk.book">Book this nest →</span></a>
+      <a class="nest love" href="inscripcion.html?nest=Love%20nest" data-solo="500"><h3>Love Nest</h3><p data-t="n5.p">Private room for 2 with private bathroom.</p><div class="price">€<b>500</b><small data-t="tk.pp">per person</small></div><span class="book" data-t="tk.book">Book this nest →</span></a>
     </div>
     <a href="inscripcion.html" class="btn fill reveal" id="buy"><span data-t="tk.cta">Register now</span><span class="arr">→</span></a>
     <p class="deposit reveal" data-t="tk.dep">A €100 deposit by bank transfer secures your place. The rest in cash on arrival or in 3 installments.</p>
@@ -421,7 +424,7 @@
     </div>
     <div class="reveal">
       <details><summary data-t="q1">Do I need previous experience?</summary><p data-t="a1">No. Acronest welcomes every level, from people taking their first steps to advanced practitioners. Tell us about your practice when you register and we will plan the schedule around it.</p></details>
-      <details><summary data-t="q2">Can I come without a partner?</summary><p data-t="a2">Of course — many people come on their own. If you come with a partner, check the Promo Duo prices.</p></details>
+      <details><summary data-t="q2">Can I come without a partner?</summary><p data-t="a2">Of course — many people come on their own.</p></details>
       <details><summary data-t="q3">What is included in the ticket?</summary><p data-t="a3">All activities, accommodation, daily meals, snacks and drinks (coffee, tea). Meals: Wednesday dinner; Thursday to Saturday breakfast, lunch and dinner; Sunday breakfast and lunch.</p></details>
       <details><summary data-t="q5">How do I pay?</summary><p data-t="a5">A €100 deposit by bank transfer secures your place. The remaining balance can be paid in cash on the first day of the event or in 3 installments.</p></details>
       <details><summary data-t="q4">Can I get a refund?</summary><p data-t="a4">Tickets are non-refundable, but they are transferable to someone else until the day before the event (updated to the current price).</p></details>
@@ -493,7 +496,7 @@ var ES = {
   "ven.l1":"Ubicación","ven.v1":"Cortijo Casería del Mercado","ven.l5":"Dirección","ven.v5":"Las Alpujarras, Granada · Ver en el mapa ↗","ven.l2":"Alojamiento","ven.v2":"En el lugar, todo incluido","ven.l3":"Comida","ven.v3":"Pensión completa","ven.l4":"Cómo llegar","ven.v4":"Aeropuerto de Granada o Málaga",
   "gal.eyebrow":"Ediciones anteriores","gal.title":"Así<br>se <span class=\"it grad\">vive</span>",
   "tk.eyebrow":"Entradas · 2027","tk.title":"Elige<br>tu <span class=\"it grad\">nido</span>","tk.text":"5 días, 4 noches. Cada entrada incluye todas las actividades, alojamiento, comidas diarias, snacks y bebidas.",
-  "tk.solo":"Individual","tk.duo":"Promo dúo · para dos","tk.pp":"por persona","tk.p2":"para dos",
+  "tk.solo":"Promo lanzamiento","tk.book":"Reservar este nido →","tk.duo":"Promo dúo · para dos","tk.pp":"por persona","tk.p2":"para dos",
   "n1.t":"Nido exterior","n1.p":"Acampada en tu tienda o camper. Baños y duchas compartidos.",
   "n2.t":"Nido de 8","n2.p":"Habitación compartida para 8. Baños y duchas compartidos.",
   "n3.t":"Nido de 4","n3.p":"Habitación compartida para 4. Baños y duchas compartidos.",
@@ -503,7 +506,7 @@ var ES = {
   "tk.dep":"Una seña de 100 € por transferencia bancaria reserva tu plaza. El resto, en efectivo al llegar o en 3 cuotas.",
   "faq.title":"Bueno<br><span class=\"it grad\">saber</span>",
   "q1":"¿Necesito experiencia previa?","a1":"No. Acronest es para todos los niveles, desde quienes dan sus primeros pasos hasta practicantes avanzados. Cuéntanos sobre tu práctica al inscribirte y armamos el programa pensando en eso.",
-  "q2":"¿Puedo ir sin pareja de acro?","a2":"Claro, mucha gente viene sola. Si vienes con pareja, mira los precios de la Promo Dúo.",
+  "q2":"¿Puedo ir sin pareja de acro?","a2":"Claro, mucha gente viene sola.",
   "q3":"¿Qué incluye la entrada?","a3":"Todas las actividades, alojamiento, comidas diarias, snacks y bebidas (café, té). Comidas: miércoles cena; de jueves a sábado desayuno, almuerzo y cena; domingo desayuno y almuerzo.",
   "q5":"¿Cómo se paga?","a5":"Una seña de 100 € por transferencia bancaria reserva tu plaza. El resto se puede pagar en efectivo el primer día del evento o en 3 cuotas.",
   "q4":"¿Se puede devolver la entrada?","a4":"Las entradas no son reembolsables, pero se pueden transferir a otra persona hasta el día anterior al evento (actualizadas al precio vigente).",

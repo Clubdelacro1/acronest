@@ -189,17 +189,17 @@
         <p class="sub" data-t="st1.s">5 days, 4 nights. All activities, accommodation, meals, snacks and drinks included.</p>
 
         <div class="mode">
-          <label><input type="radio" name="ticket" value="Solo" checked><span data-t="m.solo">Solo</span></label>
-          <label><input type="radio" name="ticket" value="Promo duo"><span data-t="m.duo">Promo duo · for two</span></label>
+          <label><input type="radio" name="ticket" value="Launch promo" checked><span data-t="m.solo">Launch promo</span></label>
+          <label hidden><input type="radio" name="ticket" value="Promo duo"><span data-t="m.duo">Promo duo · for two</span></label>
         </div>
 
         <div class="q" data-req="nest">
           <div class="nests" id="nests">
-            <label class="nest"><input type="radio" name="nest" value="Outdoor nest" data-solo="420" data-duo="760" data-dorm="0"><span class="box"><b data-t="n1">Outdoor Nest</b><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><span class="pr">€<span class="v">420</span><small class="u">per person</small></span></span></label>
-            <label class="nest"><input type="radio" name="nest" value="8-person nest" data-solo="460" data-duo="840" data-dorm="1"><span class="box"><b data-t="n2">8-Person Nest</b><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><span class="pr">€<span class="v">460</span><small class="u">per person</small></span></span></label>
-            <label class="nest"><input type="radio" name="nest" value="4-person nest" data-solo="480" data-duo="880" data-dorm="1"><span class="box"><b data-t="n3">4-Person Nest</b><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><span class="pr">€<span class="v">480</span><small class="u">per person</small></span></span></label>
-            <label class="nest"><input type="radio" name="nest" value="2-person nest" data-solo="500" data-duo="920" data-dorm="1"><span class="box"><b data-t="n4">2-Person Nest</b><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><span class="pr">€<span class="v">500</span><small class="u">per person</small></span></span></label>
-            <label class="nest"><input type="radio" name="nest" value="Love nest" data-solo="520" data-duo="960" data-dorm="0"><span class="box"><b>Love Nest</b><p data-t="n5.p">Private room for 2 with private bathroom.</p><span class="pr">€<span class="v">520</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="Outdoor nest" data-solo="400" data-duo="760" data-dorm="0"><span class="box"><b data-t="n1">Outdoor Nest</b><p data-t="n1.p">Camping in your tent or campervan. Shared toilets and showers.</p><span class="pr">€<span class="v">400</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="8-person nest" data-solo="440" data-duo="840" data-dorm="1"><span class="box"><b data-t="n2">8-Person Nest</b><p data-t="n2.p">Shared dorm for 8. Shared toilets and showers.</p><span class="pr">€<span class="v">440</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="4-person nest" data-solo="460" data-duo="880" data-dorm="1"><span class="box"><b data-t="n3">4-Person Nest</b><p data-t="n3.p">Shared dorm for 4. Shared toilets and showers.</p><span class="pr">€<span class="v">460</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="2-person nest" data-solo="480" data-duo="920" data-dorm="1"><span class="box"><b data-t="n4">2-Person Nest</b><p data-t="n4.p">Shared room for 2. Shared toilets and showers.</p><span class="pr">€<span class="v">480</span><small class="u">per person</small></span></span></label>
+            <label class="nest"><input type="radio" name="nest" value="Love nest" data-solo="500" data-duo="960" data-dorm="0"><span class="box"><b>Love Nest</b><p data-t="n5.p">Private room for 2 with private bathroom.</p><span class="pr">€<span class="v">500</span><small class="u">per person</small></span></span></label>
           </div>
           <p class="err" data-t="e.pick">Please choose an option.</p>
         </div>
@@ -389,7 +389,7 @@ var ES = {
   "back":"← Volver a la web","a.eyebrow":"Inscripción · 4ª edición","a.dates":"7 – 11 de julio de 2027","a.place":"Las Alpujarras, Granada · España",
   "s.nest":"Nido","s.type":"Entrada","s.total":"Total","s.dep":"Hoy solo pagas la seña de 100 € por transferencia.",
   "st1.no":"Paso 1 de 5","st1.t":"Elige tu <span class=\"it grad\">nido</span>","st1.s":"5 días, 4 noches. Incluye todas las actividades, alojamiento, comidas, snacks y bebidas.",
-  "m.solo":"Individual","m.duo":"Promo dúo · para dos",
+  "m.solo":"Promo lanzamiento","m.duo":"Promo dúo · para dos",
   "n1":"Nido exterior","n1.p":"Acampada en tu tienda o camper. Baños y duchas compartidos.",
   "n2":"Nido de 8","n2.p":"Habitación compartida para 8. Baños y duchas compartidos.",
   "n3":"Nido de 4","n3.p":"Habitación compartida para 4. Baños y duchas compartidos.",
@@ -460,6 +460,8 @@ function updatePrices(){
   document.getElementById('c-share').classList.toggle('show', !!dorm && val('bed').indexOf('Double') === 0);
   document.getElementById('c-other').classList.toggle('show', val('payment') === 'Other');
 }
+// Si viene desde un nido de la portada, lo dejamos elegido
+try { var pre = new URLSearchParams(location.search).get('nest'); if (pre) form.querySelectorAll('input[name=nest]').forEach(function(i){ if (i.value === pre) i.checked = true; }); } catch(e){}
 form.addEventListener('change', function(e){ updatePrices(); var q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
 form.addEventListener('input', function(e){ var q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
 
