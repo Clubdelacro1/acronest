@@ -73,7 +73,7 @@
   @keyframes breathe{50%{transform:scale(1.07) translate(-2%,2%);opacity:.9}}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,4,5,.3),rgba(3,4,5,.1) 40%,var(--bg) 96%);pointer-events:none}
   .hero .wrap{position:relative;z-index:2;width:100%}
-  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:50px;align-items:end}
   .hero-text{position:relative;z-index:2}
   .hero h1{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.6rem,7vw,8.2rem);line-height:.82;letter-spacing:-.02em;margin:26px 0 0;text-shadow:0 4px 40px rgba(0,0,0,.35)}
   .hero h1{display:inline-block}
@@ -81,15 +81,15 @@
   .hero-photo{position:relative;z-index:1;aspect-ratio:3/4.4;max-height:78vh;border-radius:400px 400px 8px 8px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(142,156,242,.55)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;animation:zoom 18s ease-in-out infinite alternate}
   @keyframes zoom{to{transform:scale(1.08)}}
-  .hero-logo{position:relative;z-index:1;align-self:center;display:flex;justify-content:center}
-  .hero-logo img{width:clamp(220px,25vw,400px);border-radius:50%;box-shadow:0 0 0 1px rgba(234,161,55,.25),0 30px 90px -20px rgba(142,156,242,.55);animation:float 7s ease-in-out infinite alternate}
-  @keyframes float{to{transform:translateY(-14px)}}
+  .hero-logo{position:absolute;top:50%;right:-4%;transform:translateY(-50%);z-index:0;pointer-events:none}
+  .hero-logo img{display:block;width:clamp(460px,48vw,820px);opacity:.5;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 79%);mask-image:linear-gradient(180deg,#000 62%,transparent 79%);animation:float 9s ease-in-out infinite alternate}
+  @keyframes float{to{transform:translateY(-16px) rotate(-1.5deg)}}
   .hero-bottom{display:flex;flex-direction:column;gap:30px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr}
     .hero h1{margin-right:0}.cd b{font-size:2.1rem}
     .hero .wrap.hero-grid{position:static}
-    .hero-logo{position:absolute;top:56px;right:-50px;z-index:0;opacity:.18;pointer-events:none}.hero-logo img{width:240px;box-shadow:none;animation:none}
+    .hero-logo{top:60px;right:-90px;transform:none}.hero-logo img{width:380px;opacity:.32}
     .hero-photo{position:absolute;inset:0;max-height:none;border-radius:0;opacity:.32;box-shadow:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   }
   .facts{display:flex;gap:56px;flex-wrap:wrap}
@@ -355,7 +355,7 @@
       </div>
     </div>
    </div>
-   <div class="hero-logo"><img src="img/logo.png" alt="Acronest"></div>
+   <div class="hero-logo"><img src="img/logo-marca.png" alt="Acronest"></div>
   </div>
 </header>
 
