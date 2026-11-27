@@ -250,7 +250,16 @@
   @media (max-width:620px){.float{left:12px;right:12px;bottom:12px}.float a{flex:1;padding:0 12px;font-size:.68rem;letter-spacing:.12em}.f-pin{flex:0 0 auto!important}footer{padding-bottom:90px!important}}
 
   .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
-  .teachers .lead{margin:18px 0 50px}
+  .teachers .lead{margin:18px 0 30px}
+  .team-toggle{background:transparent;color:var(--ink)}
+  .team-toggle:hover{border-color:var(--peach);color:var(--peach)}
+  .team-toggle .c{display:none}
+  .team-toggle[aria-expanded="true"] .o{display:none}
+  .team-toggle[aria-expanded="true"] .c{display:inline}
+  .team-toggle .arr{transition:transform .3s}
+  .team-toggle[aria-expanded="true"] .arr{transform:rotate(180deg)}
+  .team{margin-top:40px;animation:teamIn .5s ease}
+  @keyframes teamIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .tm{all:unset;display:block;cursor:pointer;text-align:left}
   .tm:focus-visible{outline:2px solid var(--peach);outline-offset:6px;border-radius:8px}
   .tm .pic{transition:border-color .3s,transform .4s;aspect-ratio:4/5;border-radius:200px 200px 8px 8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(234,161,55,.35),transparent 60%),#0f1019;border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;margin-bottom:14px}
@@ -343,7 +352,7 @@
           <a href="#gallery" class="btn line" data-t="hero.cta2">Past editions</a>
         </div>
         <div class="actions more">
-          <a href="#teachers" class="btn line"><span data-t="b.team">The teachers</span><span class="arr">↓</span></a>
+          <a href="#teachers" class="btn line" data-team-open><span data-t="b.team">The teachers</span><span class="arr">↓</span></a>
           <button type="button" class="btn line" data-open="m-sched" hidden><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
         </div>
       </div>
@@ -380,8 +389,9 @@
   <div class="wrap">
     <p class="eyebrow reveal" data-t="team.eyebrow">The team · 2027</p>
     <h2 class="reveal" data-t="team.title" data-html>The <span class="it grad">teachers</span></h2>
-    <p class="lead reveal" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Tap each one to meet them.</p>
-    <div class="team reveal" id="team"></div>
+    <p class="lead reveal" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Open the list and tap each one to meet them.</p>
+    <button type="button" class="btn line team-toggle reveal" id="team-toggle" aria-expanded="false" aria-controls="team"><span class="o" data-t="team.show">Meet the teachers</span><span class="c" data-t="team.hide">Hide the teachers</span><span class="arr">↓</span></button>
+    <div class="team" id="team" hidden></div>
   </div>
 </section>
 
@@ -529,7 +539,7 @@ var ES = {
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
   "nav.team":"Profes","nav.sched":"Cronograma","b.team":"Los profes","b.sched":"Cronograma",
   "team.eyebrow":"El equipo · 2027","team.title":"Los <span class=\"it grad\">profes</span>",
-  "team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. Toca cada uno para conocerlo.",
+  "team.show":"Ver los profes","team.hide":"Ocultar los profes","team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. Abre la lista y toca cada uno para conocerlo.",
   "sch.eyebrow":"7 – 11 de julio de 2027","sch.title":"El <span class=\"it grad\">cronograma</span>",
   "sch.lead":"Una guía de cómo fluyen los días. El horario detallado con cada taller se publica antes del evento.",
   "cd.d":"días","cd.h":"horas","cd.m":"min",
@@ -685,6 +695,12 @@ function renderProf(){
     + (gal ? '<p class="p-gal-t">' + (l === 'es' ? 'Fotos' : 'Photos') + '</p><div class="p-gal">' + gal + '</div>' : '')
     + '</div></div>';
 }
+document.addEventListener('click', function(e){
+  var tg = e.target.closest('#team-toggle, [data-team-open]'); if (!tg) return;
+  var tb = document.getElementById('team-toggle'), tl = document.getElementById('team');
+  var open = tg.id === 'team-toggle' ? tb.getAttribute('aria-expanded') !== 'true' : true;
+  tb.setAttribute('aria-expanded', open); tl.hidden = !open;
+});
 document.getElementById('team').addEventListener('click', function(e){
   var b = e.target.closest('.tm'); if (!b) return; curProf = +b.dataset.i; renderProf(); openModal('m-prof');
 });
