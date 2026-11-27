@@ -44,7 +44,8 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
   /* Menú */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  [hidden]{display:none!important}
+  nav{position:absolute;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
   nav.solid{background:rgba(3,4,5,.82);backdrop-filter:blur(14px);border-color:var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
   .logo{display:flex;align-items:center;gap:12px}
@@ -62,12 +63,7 @@
   .langs button.on{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--peach)}
   nav .btn{padding:12px 20px;font-size:.72rem;white-space:nowrap}
   @media (max-width:960px){nav ul{display:none}}
-  nav{background:rgba(3,4,5,.55);backdrop-filter:blur(10px)}
-  .pin{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px 0 12px;border-radius:999px;border:1px solid rgba(234,161,55,.45);color:var(--gold);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;background:rgba(234,161,55,.08);transition:background .25s,border-color .25s}
-  .pin:hover{background:rgba(234,161,55,.18);border-color:var(--peach)}
-  nav .btn .s{display:none}
-  @media (max-width:1100px){.pin span{display:none}.pin{width:42px;padding:0;justify-content:center}}
-  @media (max-width:520px){.right{gap:8px}nav .wrap{gap:10px}nav .btn{padding:11px 14px;font-size:.66rem;letter-spacing:.12em}nav .btn .l{display:none}nav .btn .s{display:inline}.langs button{padding:6px 4px}}
+  @media (max-width:520px){nav .btn{display:none}}
 
   /* Portada */
   .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 0 60px;overflow:hidden}
@@ -95,6 +91,11 @@
   .facts{display:flex;gap:56px;flex-wrap:wrap}
   .facts small{display:block;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
   .facts b{font-weight:500;font-size:1.15rem}
+  .where{display:block;border-bottom:1px solid rgba(234,161,55,.45);padding-bottom:4px;transition:border-color .2s}
+  .where:hover{border-color:var(--peach)}
+  .where b{display:block;color:var(--gold)}
+  .where b .arr{font-size:.85em}
+  .where span{display:block;font-size:.8rem;color:var(--muted);margin-top:2px}
   .cd{display:inline-flex;gap:22px;margin-top:22px;padding:12px 22px;border:1px solid var(--line);border-radius:14px;background:rgba(3,4,5,.45);backdrop-filter:blur(6px)}
   .cd div{text-align:center}
   .cd b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:2.6rem;line-height:1}
@@ -239,14 +240,42 @@
   .m-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;transition:border-color .2s,transform .3s}
   .m-close:hover{border-color:var(--peach);transform:rotate(90deg)}
   body.locked{overflow:hidden}
+  /* Botones flotantes */
+  .float{position:fixed;z-index:120;right:22px;bottom:22px;display:flex;gap:10px;align-items:center}
+  .float a{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:50px;padding:0 22px;border-radius:999px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;white-space:nowrap;box-shadow:0 14px 40px -10px rgba(0,0,0,.8);transition:transform .25s}
+  .float a:hover{transform:translateY(-2px)}
+  .f-pin{background:rgba(10,11,18,.88);backdrop-filter:blur(12px);border:1px solid rgba(234,161,55,.5);color:var(--gold)}
+  .f-book{background:var(--grad);color:#07070d}
+  body.locked .float{display:none}
+  @media (max-width:620px){.float{left:12px;right:12px;bottom:12px}.float a{flex:1;padding:0 12px;font-size:.68rem;letter-spacing:.12em}.f-pin{flex:0 0 auto!important}footer{padding-bottom:90px!important}}
 
   .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
-  .tm .pic{aspect-ratio:4/5;border-radius:200px 200px 8px 8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(234,161,55,.35),transparent 60%),#0f1019;border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;margin-bottom:14px}
+  .teachers .lead{margin:18px 0 50px}
+  .tm{all:unset;display:block;cursor:pointer;text-align:left}
+  .tm:focus-visible{outline:2px solid var(--peach);outline-offset:6px;border-radius:8px}
+  .tm .pic{transition:border-color .3s,transform .4s;aspect-ratio:4/5;border-radius:200px 200px 8px 8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(234,161,55,.35),transparent 60%),#0f1019;border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;margin-bottom:14px}
+  .tm:hover .pic{border-color:var(--peach);transform:translateY(-4px)}
+  .tm .more{display:inline-block;margin-top:8px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.75}
+  .tm:hover .more{opacity:1}
   .tm .pic img{width:100%;height:100%;object-fit:cover}
   .tm .pic svg{width:58%;opacity:.35;margin-bottom:-2px}
   .tm h3{font-weight:800;font-stretch:112%;text-transform:uppercase;font-size:1rem;line-height:1.15}
   .tm .role{color:var(--peach);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:4px 0}
   .tm .from{color:var(--muted);font-size:.85rem}
+  .prof{width:min(960px,100%)}
+  .p-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+  .p-grid .pic{aspect-ratio:4/5;border-radius:300px 300px 8px 8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(234,161,55,.35),transparent 60%),#0f1019;border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center}
+  .p-grid .pic img{width:100%;height:100%;object-fit:cover}
+  .p-grid .pic svg{width:58%;opacity:.35}
+  .p-grid h2{font-size:clamp(2rem,4.5vw,3.2rem);margin:8px 0 6px}
+  .p-grid .role{color:var(--peach);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+  .p-grid .from{color:var(--muted);margin-top:4px}
+  .p-grid .bio{margin-top:22px;color:#d8cbbf;font-size:1.02rem;line-height:1.7}
+  .p-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px}
+  .p-gal button{all:unset;cursor:zoom-in;aspect-ratio:1;border-radius:6px;background-size:cover;background-position:center;border:1px solid var(--line);transition:transform .3s,border-color .3s}
+  .p-gal button:hover{transform:scale(1.03);border-color:var(--peach)}
+  .p-gal-t{margin-top:28px;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+  @media (max-width:760px){.p-grid{grid-template-columns:1fr;gap:24px}.p-grid .pic{max-width:240px;width:100%;margin:0 auto}}
 
   .days{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
   .days button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:12px 18px;cursor:pointer;font:inherit;text-align:left;transition:.25s;min-width:110px}
@@ -280,14 +309,13 @@
       <li><a href="#experience" data-t="nav.exp">Experience</a></li>
       <li><a href="#venue" data-t="nav.venue">The venue</a></li>
       <li><a href="#gallery" data-t="nav.gallery">Gallery</a></li>
-      <li><a href="#teachers" data-open="m-team" data-t="nav.team">Teachers</a></li>
-      <li><a href="#schedule" data-open="m-sched" data-t="nav.sched">Schedule</a></li>
+      <li><a href="#teachers" data-t="nav.team">Teachers</a></li>
+      <li hidden><a href="#schedule" data-open="m-sched" data-t="nav.sched">Schedule</a></li>
       <li><a href="#faq" data-t="nav.faq">FAQ</a></li>
     </ul>
     <div class="right">
       <div class="langs"><button data-set="en">EN</button><button data-set="es">ES</button></div>
-      <a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="pin" aria-label="Google Maps"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span data-t="nav.pin">The venue</span></a>
-      <a href="#tickets" class="btn fill"><span class="l" data-t="nav.tickets">Secure your place</span><span class="s" data-t="nav.tickets2">Book</span><span class="arr">→</span></a>
+      <a href="#tickets" class="btn fill" data-t="nav.tickets">Tickets</a>
     </div>
   </div>
 </nav>
@@ -307,7 +335,7 @@
       <div>
         <div class="facts">
           <div><small data-t="hero.when">When</small><b data-t="hero.dates">7 – 11 July 2027</b></div>
-          <div><small data-t="hero.where">Where</small><b data-t="hero.place">Las Alpujarras</b></div>
+          <div><small data-t="hero.where">Where</small><a class="where" href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener"><b>Cortijo Casería del Mercado <span class="arr">↗</span></b><span>Finca ecológica con alojamiento rural · Las Alpujarras, Granada</span></a></div>
           <div><small data-t="hero.spots">Places</small><b data-t="hero.limited">Strictly limited</b></div>
         </div>
         <div class="actions">
@@ -315,8 +343,8 @@
           <a href="#gallery" class="btn line" data-t="hero.cta2">Past editions</a>
         </div>
         <div class="actions more">
-          <button type="button" class="btn line" data-open="m-team"><span data-t="b.team">The teachers</span><span class="arr">↗</span></button>
-          <button type="button" class="btn line" data-open="m-sched"><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
+          <a href="#teachers" class="btn line"><span data-t="b.team">The teachers</span><span class="arr">↓</span></a>
+          <button type="button" class="btn line" data-open="m-sched" hidden><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
         </div>
       </div>
     </div>
@@ -345,6 +373,15 @@
       <div><b>+12</b><small data-t="st.teach">teachers</small></div>
       <div><b>∞</b><small data-t="st.mem">memories</small></div>
     </div>
+  </div>
+</section>
+
+<section id="teachers" class="teachers" style="padding-top:40px">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-t="team.eyebrow">The team · 2027</p>
+    <h2 class="reveal" data-t="team.title" data-html>The <span class="it grad">teachers</span></h2>
+    <p class="lead reveal" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Tap each one to meet them.</p>
+    <div class="team reveal" id="team"></div>
   </div>
 </section>
 
@@ -456,14 +493,17 @@
   </div>
 </footer>
 
-<!-- Ventana: el equipo -->
-<div class="modal" id="m-team" role="dialog" aria-modal="true" aria-labelledby="m-team-t" hidden>
-  <div class="m-box">
+<!-- Botones flotantes: el lugar + reserva -->
+<div class="float">
+  <a class="f-pin" href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span data-t="fl.pin">The venue</span></a>
+  <a class="f-book" href="#tickets"><span data-t="fl.book">Secure your place</span><span class="arr">→</span></a>
+</div>
+
+<!-- Ventana: un profe (bio + fotos) -->
+<div class="modal" id="m-prof" role="dialog" aria-modal="true" aria-labelledby="p-name" hidden>
+  <div class="m-box prof">
     <button type="button" class="m-close" aria-label="Close">×</button>
-    <p class="eyebrow" data-t="team.eyebrow">The team · 2027</p>
-    <h2 id="m-team-t" data-t="team.title" data-html>The <span class="it grad">teachers</span></h2>
-    <p class="lead" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Full line-up coming soon.</p>
-    <div class="team" id="team"></div>
+    <div id="prof"></div>
   </div>
 </div>
 
@@ -484,13 +524,13 @@
 <script>
 // ── Textos en español (el inglés está escrito directo en la página) ──
 var ES = {
-  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Reserva tu plaza","nav.tickets2":"Reservar","nav.pin":"El lugar",
+  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Entradas","fl.pin":"El lugar","fl.book":"Reserva tu plaza",
   "hero.eyebrow":"Evento de acrobacia y movimiento · Granada, España","hero.year":"4ª edición · 2027",
-  "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde","hero.place":"Las Alpujarras",
+  "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde",
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
   "nav.team":"Profes","nav.sched":"Cronograma","b.team":"Los profes","b.sched":"Cronograma",
   "team.eyebrow":"El equipo · 2027","team.title":"Los <span class=\"it grad\">profes</span>",
-  "team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. El equipo completo, muy pronto.",
+  "team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. Toca cada uno para conocerlo.",
   "sch.eyebrow":"7 – 11 de julio de 2027","sch.title":"El <span class=\"it grad\">cronograma</span>",
   "sch.lead":"Una guía de cómo fluyen los días. El horario detallado con cada taller se publica antes del evento.",
   "cd.d":"días","cd.h":"horas","cd.m":"min",
@@ -579,16 +619,19 @@ if ('IntersectionObserver' in window) {
 } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
 
 // ── Profes y cronograma (para cambiar los datos, editar estas listas) ──
-// Profes: name, from, role {en, es}, photo (ej. 'img/profes/ana.jpg'; vacío = silueta)
+// Profes: name, from, role {en, es}, photo (ej. 'img/profes/ana.jpg'; vacío = silueta),
+//   bio {en, es} y gallery: lista de fotos que se ven al abrir su ficha.
+var BIO = {en:'Short biography coming soon: where they come from, how they started, what they teach and what to expect from their classes.', es:'Biografía breve muy pronto: de dónde viene, cómo empezó, qué enseña y qué esperar de sus clases.'};
+var SAMPLE = ['img/f7.jpg','img/f11.jpg','img/f24.jpg']; // fotos de ejemplo hasta tener las reales
 var TEAM = [
-  {name:'Teacher name', from:'Country', role:{en:'Acroyoga · L-basing', es:'Acroyoga · L-basing'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Icarians', es:'Icarios'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Whips & whipops', es:'Whips y whipops'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Handstands', es:'Equilibrios de manos'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Standing & acroduo', es:'Standing y acrodúo'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Soft acrobatics', es:'Acrobacia suave'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Massage', es:'Masaje'}, photo:''},
-  {name:'Teacher name', from:'Country', role:{en:'Yoga & mobility', es:'Yoga y movilidad'}, photo:''}
+  {name:'Teacher name', from:'Country', role:{en:'Acroyoga · L-basing', es:'Acroyoga · L-basing'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Icarians', es:'Icarios'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Whips & whipops', es:'Whips y whipops'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Handstands', es:'Equilibrios de manos'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Standing & acroduo', es:'Standing y acrodúo'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Soft acrobatics', es:'Acrobacia suave'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Massage', es:'Masaje'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Teacher name', from:'Country', role:{en:'Yoga & mobility', es:'Yoga y movilidad'}, photo:'', bio:BIO, gallery:SAMPLE}
 ];
 // Cronograma: un día por fila; cada actividad = [hora, {en,es} título, {en,es} detalle, tipo: move | food | night | ''].
 var T = function(en, es){ return {en:en, es:es}; };
@@ -619,17 +662,37 @@ var SCHEDULE = [
     ['17:00', T('Check-out','Check-out'), T('See you next year!','¡Nos vemos el año que viene!'), '']]}
 ];
 var TAGS = {move:T('Movement','Movimiento'), food:T('Food','Comida'), night:T('Night','Noche')};
+var lb = document.getElementById('lb');
 var silhouette = '<svg viewBox="0 0 100 120" fill="#eaa137"><circle cx="50" cy="32" r="20"/><path d="M10 120c0-26 18-44 40-44s40 18 40 44z"/></svg>';
 var curDay = 0;
 function L(){ return document.documentElement.lang === 'es' ? 'es' : 'en'; }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function picHtml(p){ return p.photo ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" loading="lazy">' : silhouette; }
 function renderTeam(){
-  var l = L();
-  document.getElementById('team').innerHTML = TEAM.map(function(p){
-    return '<article class="tm"><div class="pic">' + (p.photo ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" loading="lazy">' : silhouette) + '</div>'
-      + '<h3>' + esc(p.name) + '</h3><p class="role">' + esc(p.role[l]) + '</p><p class="from">' + esc(p.from) + '</p></article>';
+  var l = L(), more = l === 'es' ? 'Ver bio y fotos →' : 'Bio & photos →';
+  document.getElementById('team').innerHTML = TEAM.map(function(p, i){
+    return '<button type="button" class="tm" data-i="' + i + '"><div class="pic">' + picHtml(p) + '</div>'
+      + '<h3>' + esc(p.name) + '</h3><p class="role">' + esc(p.role[l]) + '</p><p class="from">' + esc(p.from) + '</p><span class="more">' + more + '</span></button>';
   }).join('');
 }
+var curProf = -1;
+function renderProf(){
+  if (curProf < 0) return;
+  var p = TEAM[curProf], l = L();
+  var gal = (p.gallery || []).map(function(src){ return '<button type="button" style="background-image:url(\'' + esc(src) + '\')" aria-label="Photo"></button>'; }).join('');
+  document.getElementById('prof').innerHTML = '<div class="p-grid"><div class="pic">' + picHtml(p) + '</div><div>'
+    + '<p class="role">' + esc(p.role[l]) + '</p><h2 id="p-name">' + esc(p.name) + '</h2><p class="from">' + esc(p.from) + '</p>'
+    + (p.bio ? '<p class="bio">' + esc(p.bio[l] || '') + '</p>' : '')
+    + (gal ? '<p class="p-gal-t">' + (l === 'es' ? 'Fotos' : 'Photos') + '</p><div class="p-gal">' + gal + '</div>' : '')
+    + '</div></div>';
+}
+document.getElementById('team').addEventListener('click', function(e){
+  var b = e.target.closest('.tm'); if (!b) return; curProf = +b.dataset.i; renderProf(); openModal('m-prof');
+});
+document.getElementById('prof').addEventListener('click', function(e){
+  var b = e.target.closest('.p-gal button'); if (!b) return;
+  lb.firstElementChild.style.backgroundImage = b.style.backgroundImage; lb.classList.add('on');
+});
 function renderSchedule(){
   var l = L();
   document.getElementById('days').innerHTML = SCHEDULE.map(function(d, i){
@@ -662,14 +725,13 @@ document.querySelectorAll('.modal').forEach(function(m){
 document.addEventListener('keydown', function(e){
   if (e.key !== 'Escape') return; var m = document.querySelector('.modal.on'); if (m) closeModal(m);
 });
-function renderModals(){ renderTeam(); renderSchedule(); }
+function renderModals(){ renderTeam(); renderSchedule(); renderProf(); }
 renderModals();
 document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', renderModals); });
-if (location.hash === '#teachers') openModal('m-team');
-if (location.hash === '#schedule') openModal('m-sched');
+
+// if (location.hash === '#schedule') openModal('m-sched'); // cronograma oculto por ahora
 
 // ── Visor de fotos ──
-var lb = document.getElementById('lb');
 document.querySelectorAll('.gallery figure').forEach(function(f){
   f.onclick = function(){ var bg = getComputedStyle(f.querySelector('.bg')).backgroundImage; lb.firstElementChild.style.backgroundImage = bg; lb.classList.add('on'); };
 });
