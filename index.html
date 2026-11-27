@@ -60,9 +60,14 @@
   .langs{display:flex;font-size:.75rem;letter-spacing:.15em}
   .langs button{background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;font:inherit}
   .langs button.on{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--peach)}
-  nav .btn{padding:12px 20px;font-size:.72rem}
+  nav .btn{padding:12px 20px;font-size:.72rem;white-space:nowrap}
   @media (max-width:960px){nav ul{display:none}}
-  @media (max-width:520px){nav .btn{display:none}}
+  nav{background:rgba(3,4,5,.55);backdrop-filter:blur(10px)}
+  .pin{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px 0 12px;border-radius:999px;border:1px solid rgba(234,161,55,.45);color:var(--gold);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;background:rgba(234,161,55,.08);transition:background .25s,border-color .25s}
+  .pin:hover{background:rgba(234,161,55,.18);border-color:var(--peach)}
+  nav .btn .s{display:none}
+  @media (max-width:1100px){.pin span{display:none}.pin{width:42px;padding:0;justify-content:center}}
+  @media (max-width:520px){.right{gap:8px}nav .wrap{gap:10px}nav .btn{padding:11px 14px;font-size:.66rem;letter-spacing:.12em}nav .btn .l{display:none}nav .btn .s{display:inline}.langs button{padding:6px 4px}}
 
   /* Portada */
   .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 0 60px;overflow:hidden}
@@ -75,21 +80,22 @@
   .hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:50px;align-items:end}
   .hero-text{position:relative;z-index:2}
   .hero h1{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.6rem,8.6vw,9.5rem);line-height:.82;letter-spacing:-.02em;margin:26px 0 0;margin-right:-28%;text-shadow:0 4px 40px rgba(0,0,0,.35)}
-  .hero h1 .it{font-size:.62em;display:block;margin-left:.08em;line-height:1}
+  .hero h1{display:inline-block}
+  .hero h1 .year{display:block;text-align:center;font-family:Archivo,sans-serif;font-weight:700;font-stretch:110%;font-size:clamp(1rem,2.5vw,2.3rem);letter-spacing:.32em;line-height:1;margin-top:.55em;padding-left:.32em;color:var(--gold);text-shadow:0 2px 18px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.8)}
   .hero-photo{position:relative;z-index:1;aspect-ratio:3/4.4;max-height:78vh;border-radius:400px 400px 8px 8px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(142,156,242,.55)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;animation:zoom 18s ease-in-out infinite alternate}
   @keyframes zoom{to{transform:scale(1.08)}}
   .hero-bottom{display:flex;flex-direction:column;gap:30px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr}
-    .hero h1{margin-right:0}
+    .hero h1{margin-right:0}.hero-photo{opacity:.22!important}.cd b{font-size:2.1rem}
     .hero .wrap.hero-grid{position:static}
     .hero-photo{position:absolute;inset:0;max-height:none;border-radius:0;opacity:.32;box-shadow:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   }
   .facts{display:flex;gap:56px;flex-wrap:wrap}
   .facts small{display:block;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
   .facts b{font-weight:500;font-size:1.15rem}
-  .cd{display:flex;gap:22px}
+  .cd{display:inline-flex;gap:22px;margin-top:22px;padding:12px 22px;border:1px solid var(--line);border-radius:14px;background:rgba(3,4,5,.45);backdrop-filter:blur(6px)}
   .cd div{text-align:center}
   .cd b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:2.6rem;line-height:1}
   .cd small{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
@@ -128,6 +134,8 @@
   .card p{color:#d8cbbf;font-size:.95rem}
   @media (max-width:900px){.exp{grid-template-columns:1fr}.card{aspect-ratio:4/3.4}}
 
+  .boxed{display:inline-flex;gap:.06em;vertical-align:-.04em}
+  .boxed i{font-style:normal;background:var(--grad);color:#07070d;font-weight:900;font-stretch:100%;width:.82em;text-align:center;line-height:1.08;font-size:.86em;border-radius:.06em}
   /* Lugar */
   .venue{background:var(--bg2)}
   .venue .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
@@ -278,7 +286,8 @@
     </ul>
     <div class="right">
       <div class="langs"><button data-set="en">EN</button><button data-set="es">ES</button></div>
-      <a href="#tickets" class="btn fill" data-t="nav.tickets">Tickets</a>
+      <a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="pin" aria-label="Google Maps"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span data-t="nav.pin">The venue</span></a>
+      <a href="#tickets" class="btn fill"><span class="l" data-t="nav.tickets">Secure your place</span><span class="s" data-t="nav.tickets2">Book</span><span class="arr">→</span></a>
     </div>
   </div>
 </nav>
@@ -288,7 +297,12 @@
   <div class="wrap hero-grid">
    <div class="hero-text">
     <p class="eyebrow" data-t="hero.eyebrow">Acrobatic &amp; movement event · Granada, Spain</p>
-    <h1>Acronest<span class="it grad" data-t="hero.year">4th edition · 2027</span></h1>
+    <div class="cd" aria-label="Countdown">
+      <div><b id="cd-d">–</b><small data-t="cd.d">days</small></div>
+      <div><b id="cd-h">–</b><small data-t="cd.h">hours</small></div>
+      <div><b id="cd-m">–</b><small data-t="cd.m">min</small></div>
+    </div>
+    <h1>Acronest<span class="year" data-t="hero.year">4th edition · 2027</span></h1>
     <div class="hero-bottom">
       <div>
         <div class="facts">
@@ -304,11 +318,6 @@
           <button type="button" class="btn line" data-open="m-team"><span data-t="b.team">The teachers</span><span class="arr">↗</span></button>
           <button type="button" class="btn line" data-open="m-sched"><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
         </div>
-      </div>
-      <div class="cd" aria-label="Countdown">
-        <div><b id="cd-d">–</b><small data-t="cd.d">days</small></div>
-        <div><b id="cd-h">–</b><small data-t="cd.h">hours</small></div>
-        <div><b id="cd-m">–</b><small data-t="cd.m">min</small></div>
       </div>
     </div>
    </div>
@@ -342,7 +351,7 @@
 <section id="experience" style="padding-top:40px">
   <div class="wrap">
     <p class="eyebrow reveal" data-t="exp.eyebrow">The experience</p>
-    <h2 class="reveal" data-t="exp.title" data-html>More than<br>a <span class="it grad">festival</span></h2>
+    <h2 class="reveal" data-t="exp.title" data-html>More than<br>a <span class="boxed"><i>f</i><i>e</i><i>s</i><i>t</i><i>i</i><i>v</i><i>a</i><i>l</i></span></h2>
     <div class="exp">
       <article class="card reveal"><div class="bg" style="background-image:url(img/f7.jpg)"></div><span class="n">01</span><h3 data-t="c1.t">Workshops</h3><p data-t="c1.p">Daily classes with international teachers, from foundations to high flying.</p></article>
       <article class="card reveal"><div class="bg" style="background-image:url(img/f11.jpg)"></div><span class="n">02</span><h3 data-t="c2.t">Jams &amp; shows</h3><p data-t="c2.p">Open jams at sunset and evening performances under the stars.</p></article>
@@ -355,17 +364,16 @@
   <div class="wrap">
     <div class="venue-img reveal"><div class="bg" style="background-image:url(img/f48.jpg)"></div></div>
     <div>
-      <p class="eyebrow reveal" data-t="ven.eyebrow">The venue</p>
       <h2 class="reveal" data-t="ven.title" data-html>A place<br><span class="it grad">like no other</span></h2>
       <p class="lead reveal" data-t="ven.text">Cortijo Casería del Mercado is an organic farm in the heart of the Alpujarra mountains, honouring nature, ecology and tradition. Two indoor yoga studios, an outdoor training space and a natural mineral-water swimming pool — all with breathtaking views.</p>
       <ul class="reveal">
         <li><span data-t="ven.l1">Location</span><span data-t="ven.v1">Cortijo Casería del Mercado</span></li>
-        <li><span data-t="ven.l5">Address</span><a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="maplink" data-t="ven.v5">Las Alpujarras, Granada · See on map ↗</a></li>
+        <li><span data-t="ven.l5">Address</span><a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="maplink">Cortijo Casería del Mercado S/N, 18438 Las Alpujarras, Granada, España ↗</a></li>
         <li><span data-t="ven.l2">Stay</span><span data-t="ven.v2">On site, all included</span></li>
         <li><span data-t="ven.l3">Food</span><span data-t="ven.v3">Full board</span></li>
         <li><span data-t="ven.l6">Check-in</span><span data-t="ven.v6">Wednesday 7 July · 4 pm</span></li>
         <li><span data-t="ven.l7">Check-out</span><span data-t="ven.v7">Sunday 11 July · 5 pm</span></li>
-        <li><span data-t="ven.l4">Arrival</span><span data-t="ven.v4">Granada or Málaga airport</span></li>
+        <li><span data-t="ven.l4">Arrival</span><a href="como-llegar.html" target="_blank" rel="noopener" class="maplink" data-t="ven.v4">Granada or Málaga airport · See directions ↗</a></li>
       </ul>
     </div>
   </div>
@@ -476,7 +484,7 @@
 <script>
 // ── Textos en español (el inglés está escrito directo en la página) ──
 var ES = {
-  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Entradas",
+  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Reserva tu plaza","nav.tickets2":"Reservar","nav.pin":"El lugar",
   "hero.eyebrow":"Evento de acrobacia y movimiento · Granada, España","hero.year":"4ª edición · 2027",
   "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde","hero.place":"Las Alpujarras",
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
@@ -488,12 +496,12 @@ var ES = {
   "cd.d":"días","cd.h":"horas","cd.m":"min",
   "man.eyebrow":"El nido","man.text":"Cinco días donde el cuerpo aprende a <em class=\"grad\">volar</em>, a confiar y a aterrizar suave. Un encuentro íntimo para quienes se mueven — en un lugar hecho para recordar.",
   "st.days":"días","st.n":"4ª","st.ed":"edición","st.teach":"profes","st.mem":"recuerdos",
-  "exp.eyebrow":"La experiencia","exp.title":"Más que<br>un <span class=\"it grad\">festival</span>",
+  "exp.eyebrow":"La experiencia","exp.title":"Más que<br>un <span class=\"boxed\"><i>f</i><i>e</i><i>s</i><i>t</i><i>i</i><i>v</i><i>a</i><i>l</i></span>",
   "c1.t":"Talleres","c1.p":"Clases todos los días con profes internacionales, desde lo básico hasta vuelos altos.",
   "c2.t":"Jams y shows","c2.p":"Jams abiertas al atardecer y shows por la noche bajo las estrellas.",
   "c3.t":"Vívelo","c3.p":"Duerme, come y descansa en el lugar. Todo está resuelto — tú solo te mueves.",
   "ven.eyebrow":"El lugar","ven.title":"Un lugar<br><span class=\"it grad\">único</span>","ven.text":"El Cortijo Casería del Mercado es una finca ecológica en el corazón de La Alpujarra, que honra la naturaleza, la ecología y la tradición. Dos salas de yoga cubiertas, un espacio de entrenamiento al aire libre y una piscina de agua mineral natural, todo con vistas impresionantes.",
-  "ven.l1":"Ubicación","ven.v1":"Cortijo Casería del Mercado","ven.l5":"Dirección","ven.v5":"Las Alpujarras, Granada · Ver en el mapa ↗","ven.l2":"Alojamiento","ven.v2":"En el lugar, todo incluido","ven.l3":"Comida","ven.v3":"Pensión completa","ven.l4":"Cómo llegar","ven.v4":"Aeropuerto de Granada o Málaga",
+  "ven.l1":"Ubicación","ven.v1":"Cortijo Casería del Mercado","ven.l5":"Dirección","ven.l2":"Alojamiento","ven.v2":"En el lugar, todo incluido","ven.l3":"Comida","ven.v3":"Pensión completa","ven.l4":"Cómo llegar","ven.v4":"Aeropuerto de Granada o Málaga · Ver indicaciones ↗",
   "gal.eyebrow":"Ediciones anteriores","gal.title":"Así<br>se <span class=\"it grad\">vive</span>",
   "tk.eyebrow":"Entradas · 2027","tk.title":"Elige<br>tu <span class=\"it grad\">nido</span>","tk.text":"5 días, 4 noches. Cada entrada incluye todas las actividades, alojamiento, comidas diarias, snacks y bebidas.",
   "tk.solo":"Promo lanzamiento","tk.book":"Reservar este nido →","tk.duo":"Promo dúo · para dos","tk.pp":"por persona","tk.p2":"para dos",
