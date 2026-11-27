@@ -295,6 +295,7 @@
   .info h2{font-size:clamp(2rem,4.5vw,3.2rem)}
   .i-text{color:#d8cbbf;font-size:1.02rem;line-height:1.7;max-width:720px;margin-bottom:30px}
   .i-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .i-video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:8px;background:#000}
   .i-gal button{all:unset;cursor:zoom-in;aspect-ratio:1;border-radius:6px;background-size:cover;background-position:center;border:1px solid var(--line);transition:transform .3s,border-color .3s}
   .i-gal button:hover{transform:scale(1.03);border-color:var(--peach)}
   @media (max-width:640px){.i-gal{grid-template-columns:repeat(2,1fr)}}
@@ -732,6 +733,7 @@ var EXP = [
   {title:{en:'A unique place', es:'Un lugar único'},
    text:{en:'Cortijo Casería del Mercado is an organic farm in the heart of the Alpujarra mountains, honouring nature, ecology and tradition. Two indoor yoga studios, an outdoor training space and a natural mineral-water swimming pool — all with breathtaking views.',
          es:'El Cortijo Casería del Mercado es una finca ecológica en el corazón de La Alpujarra, que honra la naturaleza, la ecología y la tradición. Dos salas de yoga cubiertas, un espacio de entrenamiento al aire libre y una piscina de agua mineral natural, todo con vistas impresionantes.'},
+   video:'video/cortijo.mp4', poster:'video/cortijo.jpg',
    gallery:['img/lugar/l01.jpg','img/lugar/l02.jpg','img/lugar/l03.jpg','img/lugar/l04.jpg','img/lugar/l05.jpg','img/lugar/l06.jpg','img/lugar/l07.jpg','img/lugar/l08.jpg','img/lugar/l09.jpg','img/lugar/l10.jpg','img/lugar/l11.jpg','img/lugar/l12.jpg','img/lugar/l13.jpg','img/lugar/l14.jpg']},
   {title:{en:'The best food', es:'La mejor comida'},
    text:{en:'Full board: breakfast, lunch and dinner every day, right on site. You only need to move, rest and enjoy.',
@@ -745,10 +747,11 @@ var EDITIONS = {
 var curInfo = null;
 function renderInfo(){
   if (!curInfo) return;
-  var l = L(), es = l === 'es', eb, title, text = '', gal;
+  var l = L(), es = l === 'es', eb, title, text = '', gal, vid = '';
   if (curInfo.t === 'exp') {
     var d = EXP[curInfo.i]; eb = es ? 'Más que un festival' : 'More than a festival';
     title = d.title[l]; text = d.text[l]; gal = d.gallery;
+    if (d.video) vid = '<video class="i-video" src="' + esc(d.video) + '" poster="' + esc(d.poster || '') + '" autoplay muted loop playsinline preload="metadata"></video>';
   } else {
     eb = es ? 'Así se vive' : 'This is how it feels';
     title = (es ? 'Edición ' : 'Edition ') + curInfo.y; gal = EDITIONS[curInfo.y] || [];
@@ -757,6 +760,7 @@ function renderInfo(){
   curInfo.gal = gal;
   document.getElementById('info').innerHTML = '<p class="eyebrow">' + eb + '</p><h2 id="i-title">' + esc(title) + '</h2>'
     + (text ? '<p class="i-text">' + esc(text) + '</p>' : '')
+    + vid
     + (gal.length ? '<div class="i-gal">' + gal.map(function(src, k){ return '<button type="button" data-k="' + k + '" style="background-image:url(\'' + esc(src) + '\')" aria-label="Photo"></button>'; }).join('') + '</div>' : '');
 }
 document.addEventListener('click', function(e){
@@ -821,6 +825,7 @@ function openModal(id){
 }
 function closeModal(m){
   m.classList.remove('on'); document.body.classList.remove('locked');
+  m.querySelectorAll('video').forEach(function(v){ v.pause(); });
   setTimeout(function(){ m.hidden = true; }, 300); if (lastFocus) lastFocus.focus();
 }
 document.querySelectorAll('[data-open]').forEach(function(b){
