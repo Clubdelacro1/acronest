@@ -223,6 +223,8 @@
   footer{border-top:1px solid var(--line);padding:90px 0 40px}
   .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:end}
   .foot-top h3{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,12vw,10rem);line-height:.8;letter-spacing:-.02em}
+  .foot-top h3.foot-word{display:flex;gap:.06em;font-size:clamp(1.05rem,5vw,5rem);font-stretch:normal;letter-spacing:0;line-height:1}
+  .foot-word i{font-style:normal;background:var(--peach);color:#000;font-weight:900;width:1.35em;text-align:center;line-height:1.6}
   .foot-links{display:flex;flex-direction:column;gap:10px;font-size:1.05rem}
   .foot-links a{border-bottom:1px solid transparent;transition:border-color .2s;width:fit-content}
   .foot-links a:hover{border-color:var(--peach)}
@@ -511,7 +513,7 @@
 <footer id="contact">
   <div class="wrap">
     <div class="foot-top">
-      <div style="display:flex;align-items:center;gap:clamp(16px,3vw,40px)"><img src="img/logo.png" alt="" style="width:clamp(70px,11vw,150px);border-radius:50%"><h3>Acro<span class="it grad">nest</span></h3></div>
+      <div style="display:flex;align-items:center;gap:clamp(16px,3vw,40px)"><img src="img/logo.png" alt="" style="width:clamp(70px,11vw,150px);border-radius:50%"><h3 class="foot-word" aria-label="Acronest"><i>A</i><i>C</i><i>R</i><i>O</i><i>N</i><i>E</i><i>S</i><i>T</i></h3></div>
       <div class="foot-links">
         <a href="mailto:acronest.fest@gmail.com">acronest.fest@gmail.com</a>
         <a href="https://www.instagram.com/acro.nest/" target="_blank" rel="noopener">Instagram ↗</a>
