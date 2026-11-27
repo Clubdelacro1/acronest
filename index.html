@@ -45,7 +45,7 @@
 
   /* Menú */
   [hidden]{display:none!important}
-  nav{position:absolute;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
   nav.solid{background:rgba(3,4,5,.82);backdrop-filter:blur(14px);border-color:var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
   .logo{display:flex;align-items:center;gap:12px}
@@ -73,19 +73,23 @@
   @keyframes breathe{50%{transform:scale(1.07) translate(-2%,2%);opacity:.9}}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,4,5,.3),rgba(3,4,5,.1) 40%,var(--bg) 96%);pointer-events:none}
   .hero .wrap{position:relative;z-index:2;width:100%}
-  .hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:50px;align-items:end}
+  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}
   .hero-text{position:relative;z-index:2}
-  .hero h1{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.6rem,8.6vw,9.5rem);line-height:.82;letter-spacing:-.02em;margin:26px 0 0;margin-right:-28%;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+  .hero h1{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.6rem,7vw,8.2rem);line-height:.82;letter-spacing:-.02em;margin:26px 0 0;text-shadow:0 4px 40px rgba(0,0,0,.35)}
   .hero h1{display:inline-block}
   .hero h1 .year{display:block;text-align:center;font-family:Archivo,sans-serif;font-weight:700;font-stretch:110%;font-size:clamp(1rem,2.5vw,2.3rem);letter-spacing:.32em;line-height:1;margin-top:.55em;padding-left:.32em;color:var(--gold);text-shadow:0 2px 18px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.8)}
   .hero-photo{position:relative;z-index:1;aspect-ratio:3/4.4;max-height:78vh;border-radius:400px 400px 8px 8px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(142,156,242,.55)}
   .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;animation:zoom 18s ease-in-out infinite alternate}
   @keyframes zoom{to{transform:scale(1.08)}}
+  .hero-logo{position:relative;z-index:1;align-self:center;display:flex;justify-content:center}
+  .hero-logo img{width:clamp(220px,25vw,400px);border-radius:50%;box-shadow:0 0 0 1px rgba(234,161,55,.25),0 30px 90px -20px rgba(142,156,242,.55);animation:float 7s ease-in-out infinite alternate}
+  @keyframes float{to{transform:translateY(-14px)}}
   .hero-bottom{display:flex;flex-direction:column;gap:30px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr}
-    .hero h1{margin-right:0}.hero-photo{opacity:.22!important}.cd b{font-size:2.1rem}
+    .hero h1{margin-right:0}.cd b{font-size:2.1rem}
     .hero .wrap.hero-grid{position:static}
+    .hero-logo{position:absolute;top:56px;right:-50px;z-index:0;opacity:.18;pointer-events:none}.hero-logo img{width:240px;box-shadow:none;animation:none}
     .hero-photo{position:absolute;inset:0;max-height:none;border-radius:0;opacity:.32;box-shadow:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
   }
   .facts{display:flex;gap:56px;flex-wrap:wrap}
@@ -95,7 +99,6 @@
   .where:hover{border-color:var(--peach)}
   .where b{display:block;color:var(--gold)}
   .where b .arr{font-size:.85em}
-  .where span{display:block;font-size:.8rem;color:var(--muted);margin-top:2px}
   .cd{display:inline-flex;gap:22px;margin-top:22px;padding:12px 22px;border:1px solid var(--line);border-radius:14px;background:rgba(3,4,5,.45);backdrop-filter:blur(6px)}
   .cd div{text-align:center}
   .cd b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:2.6rem;line-height:1}
@@ -344,21 +347,15 @@
       <div>
         <div class="facts">
           <div><small data-t="hero.when">When</small><b data-t="hero.dates">7 – 11 July 2027</b></div>
-          <div><small data-t="hero.where">Where</small><a class="where" href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener"><b>Cortijo Casería del Mercado <span class="arr">↗</span></b><span>Finca ecológica con alojamiento rural · Las Alpujarras, Granada</span></a></div>
-          <div><small data-t="hero.spots">Places</small><b data-t="hero.limited">Strictly limited</b></div>
+          <div><small data-t="hero.where">Where</small><a class="where" href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener"><b>Cortijo Casería del Mercado <span class="arr">↗</span></b></a></div>
         </div>
         <div class="actions">
-          <a href="#tickets" class="btn fill"><span data-t="hero.cta">Secure your place</span><span class="arr">→</span></a>
-          <a href="#gallery" class="btn line" data-t="hero.cta2">Past editions</a>
-        </div>
-        <div class="actions more">
-          <a href="#teachers" class="btn line" data-team-open><span data-t="b.team">The teachers</span><span class="arr">↓</span></a>
-          <button type="button" class="btn line" data-open="m-sched" hidden><span data-t="b.sched">Schedule</span><span class="arr">↗</span></button>
+          <a href="#tickets" class="btn fill"><span data-t="hero.cta">Save your spot</span><span class="arr">→</span></a>
         </div>
       </div>
     </div>
    </div>
-   <div class="hero-photo"><img src="img/f22.jpg" alt="Acrobatics at Acronest 2025"></div>
+   <div class="hero-logo"><img src="img/logo.png" alt="Acronest"></div>
   </div>
 </header>
 
@@ -505,7 +502,7 @@
 <!-- Botones flotantes: el lugar + reserva -->
 <div class="float">
   <a class="f-pin" href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span data-t="fl.pin">The venue</span></a>
-  <a class="f-book" href="#tickets"><span data-t="fl.book">Secure your place</span><span class="arr">→</span></a>
+  <a class="f-book" href="#tickets"><span data-t="fl.book">Sign up now</span><span class="arr">→</span></a>
 </div>
 
 <!-- Ventana: un profe (bio + fotos) -->
@@ -533,7 +530,7 @@
 <script>
 // ── Textos en español (el inglés está escrito directo en la página) ──
 var ES = {
-  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Entradas","fl.pin":"El lugar","fl.book":"Reserva tu plaza",
+  "nav.exp":"Experiencia","nav.venue":"El lugar","nav.gallery":"Galería","nav.faq":"Preguntas","nav.tickets":"Entradas","fl.pin":"El lugar","fl.book":"Inscríbete ya",
   "hero.eyebrow":"Evento de acrobacia y movimiento · Granada, España","hero.year":"4ª edición · 2027",
   "hero.when":"Cuándo","hero.dates":"7 – 11 de julio de 2027","hero.where":"Dónde",
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
