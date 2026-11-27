@@ -89,7 +89,8 @@ function welcomeEmail(d) {
     lHolder: 'Titular', lAmount: 'Importe', lRef: 'Concepto',
     restLine: rest ? 'El resto (' + money(rest) + ') lo pagas ' + restText + '.' : '',
     receipt: 'Cuando hayas pagado, envíanos el comprobante por WhatsApp a Rober o a Coni:',
-    next: 'En los próximos meses te iremos contando el cronograma, los profes y todo lo que necesitas para el viaje. Mientras tanto, síguenos en Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
+    groupTitle: 'Únete a la Comunidad Acronest', groupText: 'En este grupo de WhatsApp compartimos toda la información del evento: cronograma, profes, cómo llegar y novedades.', groupBtn: 'Unirme al grupo',
+    next: 'Y también puedes seguirnos en Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
     bye: '¡Nos vemos en el Cortijo!', sign: 'Un abrazo grande,<br>Coni y Rob'
   } : {
     subject: 'Welcome to the Nest! · Acronest 2027',
@@ -103,7 +104,8 @@ function welcomeEmail(d) {
     lHolder: 'Account holder', lAmount: 'Amount', lRef: 'Reference',
     restLine: rest ? 'You pay the balance (' + money(rest) + ') ' + restText + '.' : '',
     receipt: 'Once you have paid, send us the receipt via WhatsApp to Rober or Coni:',
-    next: 'Over the coming months we will share the schedule, the teachers and everything you need for the trip. Meanwhile, follow us on Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
+    groupTitle: 'Join the Acronest Community', groupText: 'In this WhatsApp group we share all the event information: schedule, teachers, how to get there and news.', groupBtn: 'Join the group',
+    next: 'You can also follow us on Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
     bye: 'See you at the Cortijo!', sign: 'Big hug,<br>Coni &amp; Rob'
   };
   var strip = function (s) { return String(s).replace(/<br>/g, '\n').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"'); };
@@ -111,6 +113,7 @@ function welcomeEmail(d) {
     return '<tr><td style="padding:7px 0;color:#8a7f73;font-size:14px">' + k + '</td>'
       + '<td style="padding:7px 0;text-align:right;color:#1a1612;font-size:' + (strong ? '17px;font-weight:700' : '15px') + '">' + v + '</td></tr>';
   };
+  var GROUP = 'https://chat.whatsapp.com/FnUOCjzmVDw3oRSO2stZeC';
   var wa = '<a href="https://wa.me/5491123357818" style="color:#c9791c;text-decoration:none">Rober · +54 9 11 2335 7818</a><br>'
     + '<a href="https://wa.me/56998419773" style="color:#c9791c;text-decoration:none">Coni · +56 9 9841 9773</a>';
 
@@ -138,6 +141,11 @@ function welcomeEmail(d) {
     + (T.restLine ? '<div style="font-size:14px;color:#d9cfc2;margin-top:12px">' + T.restLine + '</div>' : '')
     + '</div></td></tr>'
     + '<tr><td style="padding:20px 28px 0;font-size:15px;line-height:1.6">' + T.receipt + '<br>' + wa + '</td></tr>'
+    + '<tr><td style="padding:20px 28px 0"><div style="border:1px solid #bfe3c9;background:#eef8f0;border-radius:10px;padding:18px 20px;text-align:center">'
+    + '<div style="font-family:Georgia,serif;font-size:20px;color:#1a1612;margin-bottom:6px">' + T.groupTitle + '</div>'
+    + '<div style="font-size:14px;line-height:1.5;color:#4a4038;margin-bottom:14px">' + T.groupText + '</div>'
+    + '<a href="' + GROUP + '" style="display:inline-block;background:#25d366;color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:12px 26px;border-radius:999px">' + T.groupBtn + ' →</a>'
+    + '</div></td></tr>'
     + '<tr><td style="padding:18px 28px 0;font-size:15px;line-height:1.6;color:#4a4038">' + T.next + '</td></tr>'
     + '<tr><td style="padding:22px 28px 30px;font-size:16px;line-height:1.6">' + T.bye + '<br>'
     + '<span style="font-family:Georgia,serif;font-style:italic;font-size:19px;color:#c9791c">' + T.sign + '</span></td></tr>'
@@ -151,6 +159,7 @@ function welcomeEmail(d) {
     + T.lHolder + ': ' + BANK.holder + '\nIBAN: ' + BANK.iban + '\n' + T.lAmount + ': ' + money(100) + '\n' + T.lRef + ': ' + ref + '\n'
     + (T.restLine ? T.restLine + '\n' : '') + '\n'
     + T.receipt + '\n• Rober: +54 9 11 2335 7818\n• Coni: +56 9 9841 9773\n\n'
+    + T.groupTitle + '\n' + T.groupText + '\n' + GROUP + '\n\n'
     + strip(T.next) + '\n\n' + T.bye + '\n' + strip(T.sign);
 
   return { subject: T.subject, text: text, html: html };
