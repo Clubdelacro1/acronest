@@ -159,6 +159,9 @@
   .venue .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
   .venue-img{aspect-ratio:4/5;border-radius:300px 300px 6px 6px;overflow:hidden;position:relative}
   .venue-img .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .fader .bg{opacity:0;transform:scale(1.06);transition:opacity 1.8s ease,transform 7s ease-out}
+  .fader .bg.on{opacity:1;transform:scale(1)}
+  @media (prefers-reduced-motion:reduce){.fader .bg{transition:none;transform:none}}
   .venue ul{list-style:none;margin-top:40px;border-top:1px solid var(--line)}
   .venue li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:.98rem}
   .venue li span:first-child{color:var(--muted);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;padding-top:4px}
@@ -466,7 +469,7 @@
 
 <section class="venue" id="includes">
   <div class="wrap">
-    <div class="venue-img reveal"><div class="bg" style="background-image:url(img/f53.jpg);background-position:50% 70%"></div></div>
+    <div class="venue-img fader reveal" aria-hidden="true"><div class="bg on" style="background-image:url(img/2026/e01.jpg)"></div><div class="bg" data-bg="img/act/a14.jpg"></div><div class="bg" data-bg="img/workshops/w01.jpg"></div><div class="bg" data-bg="img/2026/e03.jpg"></div><div class="bg" data-bg="img/comida/c01.jpg"></div><div class="bg" data-bg="img/lugar/l26.jpg"></div><div class="bg" data-bg="img/2026/e05.jpg"></div><div class="bg" data-bg="img/act/a07.jpg"></div><div class="bg" data-bg="img/2026/e09.jpg"></div></div>
     <div>
       <p class="eyebrow reveal" data-t="inc.eyebrow">Your ticket</p>
       <h2 class="reveal" data-t="inc.title" data-html>What does<br>my ticket <span class="it grad">include?</span></h2>
@@ -672,6 +675,18 @@ if ('IntersectionObserver' in window) {
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+// ── Carrusel de fotos con fundido (Qué incluye): cambia cada 4,5 s y precarga la siguiente ──
+(function(){
+  var f = document.querySelector('.fader'); if (!f) return;
+  var s = [].slice.call(f.children), i = 0;
+  var load = function(el){ if (el.dataset.bg){ el.style.backgroundImage = 'url(' + el.dataset.bg + ')'; delete el.dataset.bg; } };
+  load(s[1]);
+  setInterval(function(){
+    if (document.hidden) return;
+    s[i].classList.remove('on'); i = (i + 1) % s.length; s[i].classList.add('on'); load(s[(i + 1) % s.length]);
+  }, 4500);
+})();
 
 // ── Videos de tarjetas: se cargan y reproducen solo cuando están cerca de la pantalla ──
 document.querySelectorAll('video.lazyv').forEach(function(v){
