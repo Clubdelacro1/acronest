@@ -299,6 +299,7 @@
   .i-text{color:#d8cbbf;font-size:1.02rem;line-height:1.7;max-width:720px;margin-bottom:30px}
   .i-gal{columns:4;column-gap:8px}
   .i-video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:8px;background:#000}
+  .i-link{margin:6px 0 14px}
   .i-gal button{all:unset;display:block;break-inside:avoid;margin:0 0 8px;cursor:zoom-in;border-radius:6px;overflow:hidden;border:1px solid var(--line);transition:transform .3s,border-color .3s}.i-gal button img{display:block;width:100%;height:auto}
   .i-gal button:hover{transform:scale(1.03);border-color:var(--peach)}
   @media (max-width:640px){.i-gal{columns:2}}
@@ -737,12 +738,13 @@ var EXP = [
   {title:{en:'A unique place', es:'Un lugar único'},
    text:{en:'Cortijo Casería del Mercado is an organic farm in the heart of the Alpujarra mountains, honouring nature, ecology and tradition. Two indoor yoga studios, an outdoor training space and a natural mineral-water swimming pool — all with breathtaking views.',
          es:'El Cortijo Casería del Mercado es una finca ecológica en el corazón de La Alpujarra, que honra la naturaleza, la ecología y la tradición. Dos salas de yoga cubiertas, un espacio de entrenamiento al aire libre y una piscina de agua mineral natural, todo con vistas impresionantes.'},
-   video:'video/cortijo.mp4', poster:'video/cortijo.jpg',
-   gallery:['img/lugar/l01.jpg','img/lugar/l02.jpg','img/lugar/l03.jpg','img/lugar/l04.jpg','img/lugar/l05.jpg','img/lugar/l06.jpg','img/lugar/l07.jpg','img/lugar/l08.jpg','img/lugar/l09.jpg','img/lugar/l10.jpg','img/lugar/l11.jpg','img/lugar/l12.jpg','img/lugar/l13.jpg','img/lugar/l14.jpg']},
+   vimeo:'https://player.vimeo.com/video/243159467?dnt=1&title=0&byline=0&portrait=0',
+   link:{href:'https://cortijolacaseria.com/', en:'Visit the Cortijo’s website', es:'Visita la web del Cortijo'},
+   gallery:['img/lugar/l26.jpg','img/lugar/l15.jpg','img/lugar/l27.jpg','img/lugar/l16.jpg','img/lugar/l28.jpg','img/lugar/l17.jpg','img/lugar/l29.jpg','img/lugar/l18.jpg','img/lugar/l20.jpg','img/lugar/l31.jpg','img/lugar/l30.jpg','img/lugar/l19.jpg','img/lugar/l21.jpg','img/lugar/l32.jpg','img/lugar/l22.jpg','img/lugar/l03.jpg','img/lugar/l23.jpg','img/lugar/l24.jpg','img/lugar/l25.jpg','img/lugar/l12.jpg']},
   {title:{en:'The best food', es:'La mejor comida'},
    text:{en:'Full board: breakfast, lunch and dinner every day, right on site. You only need to move, rest and enjoy.',
          es:'Pensión completa: desayuno, almuerzo y cena todos los días, en el mismo lugar. Tú solo te ocupas de moverte, descansar y disfrutar.'},
-   gallery:['img/comida/c01.jpg','img/comida/c02.jpg','img/comida/c03.jpg','img/comida/c04.jpg','img/comida/c05.jpg','img/comida/c06.jpg']}
+   gallery:['img/comida/c01.jpg','img/comida/c07.jpg','img/comida/c02.jpg','img/comida/c09.jpg','img/comida/c03.jpg','img/comida/c08.jpg','img/comida/c04.jpg','img/comida/c10.jpg','img/comida/c05.jpg','img/comida/c11.jpg','img/comida/c06.jpg']}
 ];
 var EDITIONS = {
   '2024': ['img/2024/y01.jpg','img/2024/y02.jpg','img/2024/y03.jpg','img/2024/y04.jpg','img/2024/y05.jpg','img/2024/y06.jpg'],
@@ -757,6 +759,8 @@ function renderInfo(){
     var d = EXP[curInfo.i]; eb = es ? 'Más que un festival' : 'More than a festival';
     title = d.title[l]; text = d.text[l]; gal = d.gallery;
     if (d.video) vid = '<video class="i-video" src="' + esc(d.video) + '" poster="' + esc(d.poster || '') + '" autoplay muted loop playsinline preload="metadata"></video>';
+    if (d.vimeo) vid += '<iframe class="i-video" src="' + esc(d.vimeo) + '" title="Cortijo Casería del Mercado" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border:0"></iframe>';
+    if (d.link) vid += '<p class="i-link"><a class="btn line" href="' + esc(d.link.href) + '" target="_blank" rel="noopener">' + esc(d.link[l]) + ' <span class="arr">↗</span></a></p>';
   } else {
     eb = es ? 'Así se vive' : 'This is how it feels';
     title = (es ? 'Edición ' : 'Edition ') + curInfo.y; gal = EDITIONS[curInfo.y] || [];
@@ -831,6 +835,7 @@ function openModal(id){
 function closeModal(m){
   m.classList.remove('on'); document.body.classList.remove('locked');
   m.querySelectorAll('video').forEach(function(v){ v.pause(); });
+  m.querySelectorAll('iframe').forEach(function(f){ f.src = f.src; }); // detiene el video de Vimeo
   setTimeout(function(){ m.hidden = true; }, 300); if (lastFocus) lastFocus.focus();
 }
 document.querySelectorAll('[data-open]').forEach(function(b){
