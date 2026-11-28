@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Register · Acronest 2027</title>
 <meta name="description" content="Register for Acronest 2027 — 7–11 July, Las Alpujarras, Granada.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://acronestfest.com/inscripcion.html">
+<meta property="og:title" content="Register · Acronest 2027">
+<meta property="og:description" content="Secure your place at Acronest 2027 · 7 – 11 July · Las Alpujarras, Granada.">
+<meta property="og:image" content="https://acronestfest.com/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -473,6 +481,32 @@ function updatePrices(){
   document.getElementById('c-share').classList.toggle('show', !!dorm && val('bed').indexOf('Double') === 0);
   document.getElementById('c-other').classList.toggle('show', val('payment') === 'Other');
 }
+// Borrador: guarda en este navegador lo que la persona va completando, para no perderlo si cierra la página
+var DRAFT = 'acronest-2027-form', draftStep = 0;
+function saveDraft(){
+  try {
+    var d = {step: cur, f: {}};
+    [].forEach.call(form.elements, function(el){
+      if (!el.name) return;
+      if (el.type === 'radio' || el.type === 'checkbox'){ if (el.checked) (d.f[el.name] = d.f[el.name] || []).push(el.value); }
+      else if (el.value) d.f[el.name] = el.value;
+    });
+    localStorage.setItem(DRAFT, JSON.stringify(d));
+  } catch(e){}
+}
+try {
+  var dr = JSON.parse(localStorage.getItem(DRAFT) || 'null');
+  if (dr && dr.f){
+    [].forEach.call(form.elements, function(el){
+      if (!el.name || dr.f[el.name] == null) return;
+      if (el.type === 'radio' || el.type === 'checkbox') el.checked = [].concat(dr.f[el.name]).indexOf(el.value) > -1;
+      else el.value = dr.f[el.name];
+    });
+    draftStep = Math.min(dr.step || 0, steps.length - 1);
+  }
+} catch(e){}
+form.addEventListener('change', saveDraft);
+form.addEventListener('input', saveDraft);
 // Si viene desde un nido de la portada, lo dejamos elegido
 try { var pre = new URLSearchParams(location.search).get('nest'); if (pre) form.querySelectorAll('input[name=nest]').forEach(function(i){ if (i.value === pre) i.checked = true; }); } catch(e){}
 form.addEventListener('change', function(e){ updatePrices(); var q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
@@ -497,7 +531,7 @@ function updateButtons(){
 }
 function go(i){
   steps[cur].classList.remove('on'); cur = i; steps[cur].classList.add('on');
-  updateButtons(); window.scrollTo({top:0, behavior:'smooth'});
+  updateButtons(); window.scrollTo({top:0, behavior:'smooth'}); saveDraft();
 }
 document.getElementById('prev').onclick = function(){ if (cur > 0) go(cur - 1); };
 document.getElementById('next').onclick = function(){
@@ -536,6 +570,7 @@ function submit(){
     });
 }
 function showDone(d){
+  try { localStorage.removeItem(DRAFT); } catch(e){}
   form.style.display = 'none';
   document.getElementById('done').classList.add('on');
   var ref = 'ACRONEST 2027 · ' + d.name;
@@ -554,6 +589,7 @@ document.getElementById('copy').onclick = function(){
 var saved = null; try { saved = localStorage.getItem('acronest-lang'); } catch(e){}
 setLang(saved || ((navigator.language||'').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
 document.querySelectorAll('.langs button').forEach(function(b){ b.onclick = function(){ setLang(b.dataset.set); }; });
+updatePrices(); if (draftStep > 0) go(draftStep);
 </script>
 </body>
 </html>

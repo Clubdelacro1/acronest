@@ -6,6 +6,14 @@
 <link rel="icon" type="image/png" href="img/logo.png">
 <title>Acronest</title>
 <meta name="description" content="Acronest — Acrobatic & movement event. 7–11 July 2027, Las Alpujarras, Granada, Spain.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://acronestfest.com/">
+<meta property="og:title" content="Acronest 2027 · 7 – 11 July">
+<meta property="og:description" content="Acro, movement, nature and community. 5 days at Cortijo Casería del Mercado, Las Alpujarras (Granada, Spain).">
+<meta property="og:image" content="https://acronestfest.com/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -400,7 +408,7 @@
     <div class="stats reveal">
       <div><b>5</b><small data-t="st.days">days</small></div>
       <div><b data-t="st.n">4th</b><small data-t="st.ed">edition</small></div>
-      <div><b>+12</b><small data-t="st.teach">teachers</small></div>
+      <div><b>12</b><small data-t="st.teach">teachers</small></div>
       <div><b>∞</b><small data-t="st.mem">memories</small></div>
     </div>
   </div>
@@ -410,7 +418,7 @@
   <div class="wrap">
     <p class="eyebrow reveal" data-t="team.eyebrow">The team · 2027</p>
     <h2 class="reveal" data-t="team.title" data-html>The <span class="it grad">teachers</span></h2>
-    <p class="lead reveal" data-t="team.lead">More than 12 international teachers in acroyoga, icarians, whips, handstands and more. Open the list and tap each one to meet them.</p>
+    <p class="lead reveal" data-t="team.lead">12 international teachers in acroyoga, icarians, whips, handstands and more. Open the list and tap each one to meet them.</p>
     <button type="button" class="btn line team-toggle reveal" id="team-toggle" aria-expanded="false" aria-controls="team"><span class="o" data-t="team.show">Meet the teachers</span><span class="c" data-t="team.hide">Hide the teachers</span><span class="arr">↓</span></button>
     <div class="team" id="team" hidden></div>
   </div>
@@ -421,9 +429,9 @@
     <p class="eyebrow reveal" data-t="exp.eyebrow">The experience</p>
     <h2 class="reveal" data-t="exp.title" data-html>More than<br>a <span class="boxed"><i>f</i><i>e</i><i>s</i><i>t</i><i>i</i><i>v</i><i>a</i><i>l</i></span></h2>
     <div class="exp">
-      <button type="button" class="card reveal" data-exp="0"><div class="bg" style="background-image:url(img/workshops/w01.jpg)"></div><span class="n">01</span><h3 data-t="c1.t">Workshops</h3><p data-t="c1.p">Daily classes with international teachers, from foundations to high flying.</p><span class="more" data-t="exp.more">See more →</span></button>
+      <button type="button" class="card reveal" data-exp="0"><div class="bg" style="background-image:url(img/workshops/w01.jpg)"></div><span class="n">01</span><h3 data-t="c1.t">Workshops</h3><p data-t="c1.p">Workshops every day, for every level. Choose your classes and design your own path.</p><span class="more" data-t="exp.more">See more →</span></button>
       <button type="button" class="card reveal" data-exp="1"><div class="bg" style="background-image:url(img/act/a14.jpg);background-position:50% 30%"></div><span class="n">02</span><h3 data-t="c2.t">Jams, shows &amp; more</h3><p data-t="c2.p">Open jams at sunset, shows at night and plenty of time to share.</p><span class="more" data-t="exp.more">See more →</span></button>
-      <button type="button" class="card reveal" data-exp="2"><div class="bg"><video src="video/cortijo.mp4" poster="video/cortijo.jpg" autoplay muted loop playsinline preload="metadata"></video></div><span class="n">03</span><h3 data-t="c3.t">A unique place</h3><p data-t="c3.p">An organic farm in the heart of the Alpujarra mountains, with breathtaking views.</p><span class="more" data-t="exp.more">See more →</span></button>
+      <button type="button" class="card reveal" data-exp="2"><div class="bg"><video class="lazyv" data-src="video/cortijo-card.mp4" poster="video/cortijo-card.jpg" muted loop playsinline preload="none"></video></div><span class="n">03</span><h3 data-t="c3.t">A unique place</h3><p data-t="c3.p">An organic farm in the heart of the Alpujarra mountains, with breathtaking views.</p><span class="more" data-t="exp.more">See more →</span></button>
       <button type="button" class="card reveal" data-exp="3"><div class="bg" style="background-image:url(img/comida/c01.jpg);background-position:50% 20%"></div><span class="n">04</span><h3 data-t="c4.t">The best food</h3><p data-t="c4.p">Full board, every day, right where you move.</p><span class="more" data-t="exp.more">See more →</span></button>
     </div>
   </div>
@@ -574,14 +582,14 @@ var ES = {
   "hero.spots":"Plazas","hero.limited":"Muy limitadas","hero.cta":"Reserva tu plaza","hero.cta2":"Ediciones anteriores",
   "nav.team":"Profes","nav.sched":"Cronograma","b.team":"Los profes","b.sched":"Cronograma",
   "team.eyebrow":"El equipo · 2027","team.title":"Los <span class=\"it grad\">profes</span>",
-  "team.show":"Ver los profes","team.hide":"Ocultar los profes","team.lead":"Más de 12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. Abre la lista y toca cada uno para conocerlo.",
+  "team.show":"Ver los profes","team.hide":"Ocultar los profes","team.lead":"12 profes internacionales de acroyoga, icarios, whips, equilibrios de manos y más. Abre la lista y toca cada uno para conocerlo.",
   "sch.eyebrow":"7 – 11 de julio de 2027","sch.title":"El <span class=\"it grad\">cronograma</span>",
   "sch.lead":"Una guía de cómo fluyen los días. El horario detallado con cada taller se publica antes del evento.",
   "cd.d":"días","cd.h":"horas","cd.m":"min",
   "man.eyebrow":"El nido","man.text":"Cinco días donde el cuerpo aprende a <em class=\"grad\">volar</em>, a confiar y a aterrizar suave. Un encuentro íntimo para quienes se mueven — en un lugar hecho para recordar.",
   "st.days":"días","st.n":"4ª","st.ed":"edición","st.teach":"profes","st.mem":"recuerdos",
   "exp.eyebrow":"La experiencia","exp.title":"Más que<br>un <span class=\"boxed\"><i>f</i><i>e</i><i>s</i><i>t</i><i>i</i><i>v</i><i>a</i><i>l</i></span>",
-  "c1.t":"Workshops","c1.p":"Clases todos los días con profes internacionales, desde lo básico hasta vuelos altos.",
+  "c1.t":"Workshops","c1.p":"Talleres todos los días, para todos los niveles. Elige tus clases y diseña tu propio recorrido.",
   "c2.t":"Jam, shows y más","c2.p":"Jams abiertas al atardecer, shows por la noche y mucho tiempo para compartir.",
   "c3.t":"Un lugar único","c3.p":"Una finca ecológica en el corazón de La Alpujarra, con vistas impresionantes.",
   "c4.t":"La mejor comida","c4.p":"Pensión completa, todos los días, en el mismo lugar donde te mueves.","exp.more":"Ver más →",
@@ -665,20 +673,26 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
 
+// ── Videos de tarjetas: se cargan y reproducen solo cuando están cerca de la pantalla ──
+document.querySelectorAll('video.lazyv').forEach(function(v){
+  var start = function(){ if (!v.src) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function(){}); };
+  if (!('IntersectionObserver' in window)) { start(); return; }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) start(); else if (v.src) v.pause(); }); }, {rootMargin:'200px'}).observe(v);
+});
+
 // ── Profes y cronograma (para cambiar los datos, editar estas listas) ──
 // Profes: name, from, role {en, es}, photo (ej. 'img/profes/ana.jpg'; vacío = silueta),
 //   bio {en, es} y gallery: lista de fotos que se ven al abrir su ficha.
 var BIO = {en:'Short biography coming soon: where they come from, how they started, what they teach and what to expect from their classes.', es:'Biografía breve muy pronto: de dónde viene, cómo empezó, qué enseña y qué esperar de sus clases.'};
 var SAMPLE = ['img/f7.jpg','img/f11.jpg','img/f24.jpg']; // fotos de ejemplo hasta tener las reales
 var TEAM = [
-  {name:'Teacher name', from:'Country', role:{en:'Acroyoga · L-basing', es:'Acroyoga · L-basing'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Icarians', es:'Icarios'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Whips & whipops', es:'Whips y whipops'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Handstands', es:'Equilibrios de manos'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Standing & acroduo', es:'Standing y acrodúo'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Soft acrobatics', es:'Acrobacia suave'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Massage', es:'Masaje'}, photo:'', bio:BIO, gallery:SAMPLE},
-  {name:'Teacher name', from:'Country', role:{en:'Yoga & mobility', es:'Yoga y movilidad'}, photo:'', bio:BIO, gallery:SAMPLE}
+  {name:'Paula y Nacho', from:'', role:{en:'Duo Liquen', es:'Dúo Liquen'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Cahita y Val', from:'', role:{en:'Duo', es:'Dúo'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Rober y Coni', from:'', role:{en:'Duo · Acronest organisers', es:'Dúo · organizadores de Acronest'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Marco y Jochu', from:'', role:{en:'Duo', es:'Dúo'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Andrea y Jen', from:'', role:{en:'Duo', es:'Dúo'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Filippo', from:'', role:{en:'Teacher', es:'Profe'}, photo:'', bio:BIO, gallery:SAMPLE},
+  {name:'Nat', from:'', role:{en:'Teacher', es:'Profe'}, photo:'', bio:BIO, gallery:SAMPLE}
 ];
 // Cronograma: un día por fila; cada actividad = [hora, {en,es} título, {en,es} detalle, tipo: move | food | night | ''].
 var T = function(en, es){ return {en:en, es:es}; };
@@ -728,8 +742,8 @@ function lbStep(d){ lbI = (lbI + d + lbList.length) % lbList.length; lbShow(); }
 // Para cambiar textos o fotos: editar EXP. Para las ediciones: EDITIONS.
 var EXP = [
   {title:{en:'Workshops', es:'Workshops'},
-   text:{en:'Every day there are workshops in acroyoga, icarians, whips, handstands, acroduo and more, at different levels. Choose the ones you want and build your own path, from the foundations to the highest flights.',
-         es:'Cada día hay talleres de acroyoga, icarios, whips, equilibrios de manos, acrodúo y más, en distintos niveles. Elige los que quieras y arma tu propio recorrido, desde las bases hasta los vuelos más altos.'},
+   text:{en:'Every day you will find workshops in AcroYoga, Icarians, Whips, Handstands, AcroDuo and much more, designed for different levels. Choose the classes that interest you most and design your own path: explore new disciplines, strengthen your foundations and take on new challenges. The idea is that everyone finds their own way, shares and enjoys flying in their own style.',
+         es:'Cada día encontrarás talleres de AcroYoga, Icarios, Whips, Equilibrios de manos, AcroDúo y mucho más, pensados para distintos niveles. Elige las clases que más te interesen y diseña tu propio recorrido: explora nuevas disciplinas, fortalece tus bases y anímate a nuevos desafíos. La idea es que cada uno encuentre su camino, comparta y disfrute del vuelo a su manera.'},
    gallery:['img/workshops/w01.jpg','img/workshops/w02.jpg','img/workshops/w03.jpg','img/workshops/w04.jpg','img/workshops/w05.jpg','img/workshops/w06.jpg','img/workshops/w07.jpg','img/workshops/w08.jpg','img/workshops/w09.jpg','img/workshops/w10.jpg','img/workshops/w11.jpg','img/workshops/w12.jpg','img/workshops/w13.jpg','img/workshops/w14.jpg','img/workshops/w15.jpg','img/workshops/w16.jpg','img/workshops/w17.jpg','img/workshops/w18.jpg','img/workshops/w19.jpg','img/workshops/w20.jpg','img/workshops/w21.jpg','img/workshops/w22.jpg','img/workshops/w23.jpg','img/workshops/w24.jpg','img/workshops/w25.jpg','img/workshops/w26.jpg','img/workshops/w27.jpg','img/workshops/w28.jpg','img/workshops/w29.jpg','img/workshops/w30.jpg','img/workshops/w31.jpg','img/workshops/w32.jpg','img/workshops/w33.jpg','img/workshops/w34.jpg','img/workshops/w35.jpg','img/workshops/w36.jpg','img/workshops/w37.jpg','img/workshops/w38.jpg','img/lugar/l09.jpg']},
   {title:{en:'Jams, shows & more', es:'Jam, shows y más'},
    text:{en:'When the classes end, another part of the festival begins: open jams to practise with everyone, shows by teachers and participants under the stars, music, massage and time to rest and meet people.',
