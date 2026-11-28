@@ -156,15 +156,14 @@
   .boxed i{font-style:normal;background:var(--grad);color:#07070d;font-weight:900;font-stretch:100%;width:.82em;text-align:center;line-height:1.08;font-size:.86em;border-radius:.06em}
   /* Lugar */
   .venue{background:var(--bg2)}
-  .venue .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+  .venue .wrap{max-width:760px}
   .venue-img{aspect-ratio:4/5;border-radius:300px 300px 6px 6px;overflow:hidden;position:relative}
   .venue-img .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-  .fader .bg{opacity:0;transform:scale(1.06);transition:opacity 1.8s ease,transform 7s ease-out}
-  .fader .bg.on{opacity:1;transform:scale(1)}
-  @media (prefers-reduced-motion:reduce){.fader .bg{transition:none;transform:none}}
   .venue ul{list-style:none;margin-top:40px;border-top:1px solid var(--line)}
   .venue li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:.98rem}
-  .venue li span:first-child{color:var(--muted);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;padding-top:4px}
+  .venue li span:first-child{flex:none;color:var(--muted);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;padding-top:4px}
+  .venue .where2{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+  .venue li > span:last-child{text-align:right}
   @media (max-width:900px){.venue .wrap{grid-template-columns:1fr;gap:50px}.venue-img{max-width:440px}}
 
   .maplink{color:var(--peach);border-bottom:1px solid transparent;transition:border-color .2s;text-align:right}
@@ -469,17 +468,16 @@
 
 <section class="venue" id="includes">
   <div class="wrap">
-    <div class="venue-img fader reveal" aria-hidden="true"><div class="bg on" style="background-image:url(img/2026/e01.jpg)"></div><div class="bg" data-bg="img/act/a14.jpg"></div><div class="bg" data-bg="img/workshops/w01.jpg"></div><div class="bg" data-bg="img/2026/e03.jpg"></div><div class="bg" data-bg="img/comida/c01.jpg"></div><div class="bg" data-bg="img/lugar/l26.jpg"></div><div class="bg" data-bg="img/2026/e05.jpg"></div><div class="bg" data-bg="img/act/a07.jpg"></div><div class="bg" data-bg="img/2026/e09.jpg"></div></div>
     <div>
       <p class="eyebrow reveal" data-t="inc.eyebrow">Your ticket</p>
       <h2 class="reveal" data-t="inc.title" data-html>What does<br>my ticket <span class="it grad">include?</span></h2>
       <ul class="reveal">
-        <li><span data-t="ven.l1">Location</span><a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="maplink">Cortijo Casería del Mercado ↗</a></li>
-        <li><span data-t="ven.l2">Stay</span><span data-t="ven.v2">On site, all included</span></li>
-        <li><span data-t="ven.l3">Food</span><span data-t="ven.v3">Full board</span></li>
+        <li><span data-t="ven.l2">Stay</span><span data-t="ven.v2">Included, with access to all the venue facilities</span></li>
+        <li><span data-t="ven.l5">Workshops</span><span data-t="ven.v5">All the workshops</span></li>
+        <li><span data-t="ven.l3">Food</span><span data-t="ven.v3">Full board: breakfast, lunch and dinner · buffet</span></li>
+        <li><span data-t="ven.l1">Where</span><span class="where2"><a href="https://maps.app.goo.gl/T2wJd36waQQQtUQw5" target="_blank" rel="noopener" class="maplink">Cortijo Casería del Mercado ↗</a><a href="como-llegar.html" target="_blank" rel="noopener" class="maplink" data-t="ven.v4">How to get there ↗</a></span></li>
         <li><span data-t="ven.l6">Check-in</span><span data-t="ven.v6">Wednesday 7 July · 4 pm</span></li>
         <li><span data-t="ven.l7">Check-out</span><span data-t="ven.v7">Sunday 11 July · 5 pm</span></li>
-        <li><span data-t="ven.l4">Arrival</span><a href="como-llegar.html" target="_blank" rel="noopener" class="maplink" data-t="ven.v4">Granada or Málaga airport · See directions ↗</a></li>
       </ul>
     </div>
   </div>
@@ -599,7 +597,7 @@ var ES = {
   "inc.eyebrow":"Tu ticket","inc.title":"¿Qué incluye<br>mi <span class=\"it grad\">ticket?</span>","nav.inc":"Tu ticket",
   "ed.2024":"Edición 2024","ed.2025":"Edición 2025","ed.2026":"Edición 2026",
   "ven.eyebrow":"El lugar","ven.title":"Un lugar<br><span class=\"it grad\">único</span>","ven.text":"El Cortijo Casería del Mercado es una finca ecológica en el corazón de La Alpujarra, que honra la naturaleza, la ecología y la tradición. Dos salas de yoga cubiertas, un espacio de entrenamiento al aire libre y una piscina de agua mineral natural, todo con vistas impresionantes.",
-  "ven.l1":"Ubicación","ven.l2":"Alojamiento","ven.v2":"En el lugar, todo incluido","ven.l3":"Comida","ven.v3":"Pensión completa","ven.l4":"Cómo llegar","ven.v4":"Aeropuerto de Granada o Málaga · Ver indicaciones ↗",
+  "ven.l1":"Dónde","ven.l2":"Alojamiento","ven.v2":"Incluido, con acceso a todas las instalaciones del lugar","ven.l5":"Talleres","ven.v5":"Todos los talleres","ven.l3":"Comida","ven.v3":"Pensión completa: desayuno, almuerzo y cena · buffet","ven.l4":"Cómo llegar","ven.v4":"Cómo llegar ↗",
   "gal.eyebrow":"Ediciones anteriores","gal.title":"Así<br>se <span class=\"it grad\">vive</span>",
   "tk.eyebrow":"Entradas · 2027","tk.title":"Elige<br>tu <span class=\"it grad\">nido</span>","tk.text":"5 días, 4 noches. Cada entrada incluye todas las actividades, alojamiento, comidas diarias, snacks y bebidas.",
   "tk.solo":"Promo lanzamiento","tk.book":"Reservar este nido →","tk.duo":"Promo dúo · para dos","tk.pp":"por persona","tk.p2":"para dos",
@@ -675,18 +673,6 @@ if ('IntersectionObserver' in window) {
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
-
-// ── Carrusel de fotos con fundido (Qué incluye): cambia cada 4,5 s y precarga la siguiente ──
-(function(){
-  var f = document.querySelector('.fader'); if (!f) return;
-  var s = [].slice.call(f.children), i = 0;
-  var load = function(el){ if (el.dataset.bg){ el.style.backgroundImage = 'url(' + el.dataset.bg + ')'; delete el.dataset.bg; } };
-  load(s[1]);
-  setInterval(function(){
-    if (document.hidden) return;
-    s[i].classList.remove('on'); i = (i + 1) % s.length; s[i].classList.add('on'); load(s[(i + 1) % s.length]);
-  }, 4500);
-})();
 
 // ── Videos de tarjetas: se cargan y reproducen solo cuando están cerca de la pantalla ──
 document.querySelectorAll('video.lazyv').forEach(function(v){
