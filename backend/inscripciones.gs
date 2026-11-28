@@ -13,7 +13,7 @@ var COLUMNS = [
   ['bed', 'Cama'], ['share_with', 'Comparte cama con'], ['disciplines', 'Disciplinas'], ['level', 'Nivel'], ['role', 'Rol'],
   ['experience', 'Experiencia'], ['diet', 'Comida'], ['allergies', 'Alergias'], ['source', 'Cómo se enteró'],
   ['payment', 'Forma de pago'], ['payment_other', 'Pago (otro)'], ['terms', 'Condiciones'], ['language', 'Idioma'],
-  ['deposit', 'Seña recibida'], ['notes', 'Notas']
+  ['deposit', 'Seña recibida'], ['notes', 'Notas'], ['travel', 'Cómo viene']
 ];
 
 function doPost(e) {
@@ -28,6 +28,10 @@ function doPost(e) {
       sheet.getRange(1, 1, 1, COLUMNS.length).setValues([COLUMNS.map(function (c) { return c[1]; })]);
       sheet.setFrozenRows(1);
       sheet.getRange(1, 1, 1, COLUMNS.length).setFontWeight('bold');
+    }
+    // Si se agregaron columnas nuevas al final, completa su título
+    if (sheet.getRange(1, COLUMNS.length).getValue() !== COLUMNS[COLUMNS.length - 1][1]) {
+      sheet.getRange(1, 1, 1, COLUMNS.length).setValues([COLUMNS.map(function (c) { return c[1]; })]).setFontWeight('bold');
     }
     sheet.appendRow(COLUMNS.map(function (c) { return d[c[0]] == null ? '' : d[c[0]]; }));
 
@@ -89,6 +93,8 @@ function welcomeEmail(d) {
     lHolder: 'Titular', lAmount: 'Importe', lRef: 'Concepto',
     restLine: rest ? 'El resto (' + money(rest) + ') lo pagas ' + restText + '.' : '',
     receipt: 'Cuando hayas pagado, envíanos el comprobante por WhatsApp a Rober o a Coni:',
+    howTitle: 'Cómo llegar al Cortijo', howText: 'Te dejamos toda la info para llegar en coche, autobús o avión, y el shuttle desde la estación.', howBtn: 'Ver cómo llegar',
+    howHelp: 'Nos dijiste que todavía no sabes cómo vas a venir: tranquilo/a, te escribimos para ayudarte a organizar el viaje.',
     groupTitle: 'Únete a la Comunidad Acronest', groupText: 'En este grupo de WhatsApp compartimos toda la información del evento: cronograma, profes, cómo llegar y novedades.', groupBtn: 'Unirme al grupo',
     next: 'Y también puedes seguirnos en Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
     bye: '¡Nos vemos en el Cortijo!', sign: 'Un abrazo grande,<br>Coni y Rob'
@@ -104,6 +110,8 @@ function welcomeEmail(d) {
     lHolder: 'Account holder', lAmount: 'Amount', lRef: 'Reference',
     restLine: rest ? 'You pay the balance (' + money(rest) + ') ' + restText + '.' : '',
     receipt: 'Once you have paid, send us the receipt via WhatsApp to Rober or Coni:',
+    howTitle: 'How to get to the Cortijo', howText: 'Here is everything you need to get there by car, bus or plane, plus the shuttle from the bus station.', howBtn: 'See how to get there',
+    howHelp: 'You told us you don\'t know yet how you are coming: no worries, we will write to you to help you plan the trip.',
     groupTitle: 'Join the Acronest Community', groupText: 'In this WhatsApp group we share all the event information: schedule, teachers, how to get there and news.', groupBtn: 'Join the group',
     next: 'You can also follow us on Instagram <a href="https://instagram.com/acro.nest" style="color:#c9791c">@acro.nest</a>.',
     bye: 'See you at the Cortijo!', sign: 'Big hug,<br>Coni &amp; Rob'
@@ -114,6 +122,8 @@ function welcomeEmail(d) {
       + '<td style="padding:7px 0;text-align:right;color:#1a1612;font-size:' + (strong ? '17px;font-weight:700' : '15px') + '">' + v + '</td></tr>';
   };
   var GROUP = 'https://chat.whatsapp.com/FnUOCjzmVDw3oRSO2stZeC';
+  var HOW = 'https://acronestfest.com/como-llegar.html';
+  var unsure = String(d.travel || '').indexOf('know') > -1;
   var wa = '<a href="https://wa.me/5491123357818" style="color:#c9791c;text-decoration:none">Rober · +54 9 11 2335 7818</a><br>'
     + '<a href="https://wa.me/56998419773" style="color:#c9791c;text-decoration:none">Coni · +56 9 9841 9773</a>';
 
@@ -141,6 +151,11 @@ function welcomeEmail(d) {
     + (T.restLine ? '<div style="font-size:14px;color:#d9cfc2;margin-top:12px">' + T.restLine + '</div>' : '')
     + '</div></td></tr>'
     + '<tr><td style="padding:20px 28px 0;font-size:15px;line-height:1.6">' + T.receipt + '<br>' + wa + '</td></tr>'
+    + '<tr><td style="padding:20px 28px 0"><div style="border:1px solid #eadcc8;border-radius:10px;padding:18px 20px;text-align:center">'
+    + '<div style="font-family:Georgia,serif;font-size:20px;color:#1a1612;margin-bottom:6px">' + T.howTitle + '</div>'
+    + '<div style="font-size:14px;line-height:1.5;color:#4a4038;margin-bottom:14px">' + T.howText + (unsure ? '<br><b>' + T.howHelp + '</b>' : '') + '</div>'
+    + '<a href="' + HOW + '" style="display:inline-block;background:#eaa137;color:#07070d;text-decoration:none;font-weight:700;font-size:15px;padding:12px 26px;border-radius:999px">' + T.howBtn + ' →</a>'
+    + '</div></td></tr>'
     + '<tr><td style="padding:20px 28px 0"><div style="border:1px solid #bfe3c9;background:#eef8f0;border-radius:10px;padding:18px 20px;text-align:center">'
     + '<div style="font-family:Georgia,serif;font-size:20px;color:#1a1612;margin-bottom:6px">' + T.groupTitle + '</div>'
     + '<div style="font-size:14px;line-height:1.5;color:#4a4038;margin-bottom:14px">' + T.groupText + '</div>'
@@ -159,6 +174,7 @@ function welcomeEmail(d) {
     + T.lHolder + ': ' + BANK.holder + '\nIBAN: ' + BANK.iban + '\n' + T.lAmount + ': ' + money(100) + '\n' + T.lRef + ': ' + ref + '\n'
     + (T.restLine ? T.restLine + '\n' : '') + '\n'
     + T.receipt + '\n• Rober: +54 9 11 2335 7818\n• Coni: +56 9 9841 9773\n\n'
+    + T.howTitle + '\n' + T.howText + '\n' + (unsure ? T.howHelp + '\n' : '') + HOW + '\n\n'
     + T.groupTitle + '\n' + T.groupText + '\n' + GROUP + '\n\n'
     + strip(T.next) + '\n\n' + T.bye + '\n' + strip(T.sign);
 

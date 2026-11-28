@@ -314,6 +314,18 @@
           <p class="err" data-t="e.req">This field is required.</p>
         </div>
 
+        <div class="q" data-req="travel">
+          <span class="lbl"><span data-t="q.travel">How are you getting to the Cortijo?</span> <span class="req">*</span><span class="hint" data-t="q.travel.h">So we can make sure you arrive easily, and help you if needed.</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="travel" value="Plane"><span data-t="t1">By plane</span></label>
+            <label class="opt"><input type="radio" name="travel" value="Bus"><span data-t="t2">By bus</span></label>
+            <label class="opt"><input type="radio" name="travel" value="Car"><span data-t="t3">By car</span></label>
+            <label class="opt"><input type="radio" name="travel" value="Don't know yet"><span data-t="t4">I don't know yet</span></label>
+          </div>
+          <p class="hint" style="margin-top:8px"><a href="como-llegar.html" target="_blank" rel="noopener" style="color:var(--peach);text-decoration:underline" data-t="q.travel.l">See how to get there ↗</a></p>
+          <p class="err" data-t="e.pick">Please choose an option.</p>
+        </div>
+
         <div class="q">
           <label for="source"><span data-t="q.src">How did you find out about Acronest?</span><span class="hint" data-t="q.src.h">Friend, Instagram, etc. — optional</span></label>
           <input type="text" id="source" name="source">
@@ -407,7 +419,8 @@ var ES = {
   "q.role":"¿Qué rol prefieres?","r.hyb":"Híbrido","q.exp":"Cuéntanos sobre tu práctica y experiencia",
   "st4.no":"Paso 4 de 5","st4.t":"Comida <span class=\"it grad\">y más</span>","st4.s":"Nuestra cocina te cuida toda la semana.",
   "q.diet":"Sobre la comida","f1":"Como de todo","f2":"Vegetariano","f3":"Vegano",
-  "q.all":"¿Tienes alguna alergia o restricción alimentaria?","q.all.h":"Escribe “no” si no tienes","q.src":"¿Cómo te enteraste de Acronest?","q.src.h":"Amigos, Instagram, etc. — opcional",
+  "q.all":"¿Tienes alguna alergia o restricción alimentaria?","q.all.h":"Escribe “no” si no tienes","q.travel":"¿Cómo vienes al Cortijo?","q.travel.h":"Para asegurarnos de que llegues fácil y ayudarte si lo necesitas.","t1":"En avión","t2":"En autobús","t3":"En coche","t4":"Todavía no lo sé","q.travel.l":"Ver cómo llegar ↗",
+  "q.src":"¿Cómo te enteraste de Acronest?","q.src.h":"Amigos, Instagram, etc. — opcional",
   "st5.no":"Paso 5 de 5","st5.t":"Reserva tu <span class=\"it grad\">plaza</span>","st5.s":"Para reservar tu plaza pedimos una seña de 100 € por transferencia bancaria. En la pantalla siguiente verás los datos.",
   "q.pay":"¿Cómo quieres pagar el resto?","p1":"100 € ahora + el resto en efectivo en el evento","p2":"100 € ahora + el resto en 3 cuotas","p3":"Otra forma — profesores, voluntarios, etc.",
   "q.other":"¿Cuál es tu acuerdo de pago?",
@@ -500,7 +513,7 @@ function collect(){
     ticket: val('ticket'), nest: val('nest'), price: n ? Number(duo ? n.dataset.duo : n.dataset.solo) : '',
     partner: duo ? val('partner') : '', bed: n && n.dataset.dorm === '1' ? val('bed') : '', share_with: val('share'),
     disciplines: val('disciplines'), level: val('level'), role: val('role'), experience: val('experience'),
-    diet: val('diet'), allergies: val('allergies'), source: val('source'),
+    diet: val('diet'), allergies: val('allergies'), travel: val('travel'), source: val('source'),
     payment: val('payment'), payment_other: val('payment') === 'Other' ? val('payother') : '', terms: val('terms') ? 'Accepted' : ''
   };
 }
